@@ -108,6 +108,7 @@ h1 {
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-left: 25%;
+  margin-bottom: 100px;
 }
 
 /* Carte avec image à droite */
@@ -162,13 +163,15 @@ h1 {
   right: 0;
   bottom: 0;
   height: 100%;
-  max-height: 260px;      /* ajuste selon tes visuels */
+  max-height: 1000px;      /* ajuste selon tes visuels */
   object-fit: contain;
   pointer-events: none;   /* clics ne captent pas l’image */
   user-select: none;
-  opacity: .95;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,.4));
+  opacity: 1;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.4));
 }
+
+
 
 /* Hover léger */
 .card:hover { transform: translateY(-3px); transition: transform .2s; }
