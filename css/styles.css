@@ -72,7 +72,6 @@ body {
     padding: 16px;
 }
 
-/* --- Tes styles existants conservés --- */
 
 
 h1 {
@@ -103,12 +102,11 @@ h1 {
 
 /* Grille des cartes */
 .cards-container {
+  width: min(1200px, calc(100vw - 240px - 80px)); /* -80px = marge “coussin” */
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* toujours 2 colonnes */
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  padding: 32px 24px;
-  max-width: 1400px; /* élargit la grille si tu veux */
-  margin-left: 240px; /* pour la sidebar */
 }
 
 /* Carte avec image à droite */
