@@ -107,6 +107,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  margin-left: 25%;
 }
 
 /* Carte avec image à droite */
