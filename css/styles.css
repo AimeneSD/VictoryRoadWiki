@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 158px;          /* largeur colonne */
+    width: 250px;          /* largeur colonne */
     height: 100vh;         /* pleine hauteur */
     background: linear-gradient(180deg, #7dccf3 0%, #00b8ee 36%, #004db6 70%, #18008f 100%);
     display: flex;
