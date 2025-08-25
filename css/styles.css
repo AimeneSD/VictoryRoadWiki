@@ -1,3 +1,17 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../Ressources/Fond\ HTML.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+
 /* --- Sidebar verticale à gauche --- */
 .nav {
     position: fixed;
@@ -59,16 +73,7 @@
 }
 
 /* --- Tes styles existants conservés --- */
-body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url('../Ressources/Fond\ HTML.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    text-align: center;
-}
+
 
 h1 {
     font-family: Impact, Arial Black, sans-serif;
@@ -129,10 +134,12 @@ h1 {
 
 .card h2 {
   margin: 0 0 8px;
-  font-family: Impact, Arial Black, sans-serif;
+  font-family: Impact, Arial, sans-serif;
+  color: #fff;
   text-transform: uppercase;
   font-size: 26px;
-  letter-spacing: .5px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px #000;
 }
 
 .card p {
@@ -172,6 +179,7 @@ h1 {
 .card:hover { transform: translateY(-3px); transition: transform .2s; }
 
 .footer {
+    margin-top: auto;
     background: #000000;
     color: white;
     padding: 10px;
