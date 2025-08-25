@@ -22,7 +22,7 @@ body {
     background: linear-gradient(180deg, #7dccf3 0%, #00b8ee 36%, #004db6 70%, #18008f 100%);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     box-sizing: border-box;
 }
 
@@ -31,7 +31,7 @@ body {
     height: 100px;          /* ajuste si besoin */
     width: auto;
     margin: 0 0 16px 0;    /* espace sous le logo */
-    margin-left: 25%;
+    margin-left: 60px ;
     display: block;
 
 }
@@ -131,7 +131,7 @@ h1 {
   color: #fff;
   text-transform: uppercase;
   font-size: 26px;
-  letter-spacing: 2px;
+  letter-spacing: .1px;
   text-shadow: 1px 1px 3px #000;
 }
 
