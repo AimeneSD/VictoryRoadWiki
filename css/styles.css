@@ -13,7 +13,7 @@ body {
 
 
 /* --- Sidebar verticale à gauche --- */
-.nav {
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -40,8 +40,6 @@ body {
 .nav ul{
     list-style: none;
     padding: 0;
-    margin: 0;
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0px;
@@ -50,7 +48,6 @@ body {
     overflow: visible;
 }
 
-.nav ul li { width: 100%; }
 
 .link {
     display: block;
@@ -171,7 +168,19 @@ h1 {
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.4));
 }
 
+#NotebookImage {
+    height: 70%;
+    margin-bottom: 30px;
+}
 
+#KidouImage {
+    height: 80%;
+    margin-bottom: 20px;
+}    
+
+#destinImage {
+    height: 95%;
+}
 
 /* Hover léger */
 .card:hover { transform: translateY(-3px); transition: transform .2s; }
