@@ -10,83 +10,101 @@
     </head>
     <body>
         <header class="header">
-            <aside class="sidebar">
-                <nav class="nav">
-                    <ul>
-                        <li><img src="Ressources/Logo.png" alt="Logo" class="logo"></li>
-                        <li><a href="" class="link">Home</a></li>
-                        <li><a href="" class="link">Characters</a></li>
-                        <li><a href="" class="link">Guides</a></li>
-                        <li><a href="" class="link">Techniques</a></li>
-                        <li><a href="" class="link">Items</a></li>
-                    </ul>
-                </nav>
-            </aside>
-            <h1>Victory Road Wiki</h1>
+            <div class="off-screen-menu active">
+                <ul class="redirect-list">
+                    <li><a href="index.html"><img class="logo" src="Ressources/Logo.png" alt="Victory Road Wiki Logo"></a></li>
+                    <li><a class="redirect-text" href="#"><img class="redirect-image" src="/Ressources/CharacterIcon.png">Characters</a></li>
+                    <li><a class="redirect-text" href="#"><img class="redirect-image" src="Ressources/guide icon.png">Guides</a></li>
+                    <li><a class="redirect-text" href="#"><img class="redirect-image" src="/Ressources/BallFoot.png">Techniques</a></li>
+                    <li><a class="redirect-text" href="#"><img class="redirect-image" src="/Ressources/BagIcon.png">Items</a></li>
+                    <li><a class="redirect-text" href="#"><img class="redirect-image" src="/Ressources/trophy-icon.PNG">Tiers</a></li>
+                    <li><a class="redirect-text" href="#"><img class="redirect-image" src="/Ressources/TeamIcon.png">Teams</a></li>
+                </ul>
+            </div>
+            <nav>
+                <div  class="sidebar active">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
             <br>
+            <h1>Victory Road Wiki</h1>
             <p class="descriptionsite">Welcome to Victory Road Wiki! <br>Your ultimate encyclopedia for Inazuma Eleven: Victory Road. <br>Here you’ll find everything you need to dive into the game.</p>
         </header>
 
 
-        <main>
+        <main class="main">
             <div class="cards-container">
                 <!-- Characters -->
                 <div class="card card--with-image">
-                    <div class="card__content">
-                        <h2>Characters</h2>
-                        <p>Meet all characters, their background and stats.</p>
-                        <a href="#" class="btn">Go to →</a>
-                    </div>
-                    <img class="card__image" src="Ressources/MarkEvansArtwork1.png" alt="Characters">
+                    <a href="#" class="card-link">
+                        <div class="card__content">
+                            <h2>Characters</h2>
+                            <p>Meet all characters, their background and stats.</p>
+                            <button class="btn">Go to →</button>
+                        </div>
+                        <img class="card__image" src="Ressources/MarkEvansArtwork1.png" alt="Characters">
+                    </a>
                 </div>
 
                 <!-- Guides -->
                 <div class="card card--with-image">
-                    <div class="card__content">
-                        <h2>Guides</h2>
-                        <p>Informations that the game doesn't tell you.</p>
-                        <a href="#" class="btn">Go to →</a>
-                    </div>
-                    <img class="card__image" id="NotebookImage" src="Ressources/GrandpaTrainingNotes.png" alt="Guides">
+                    <a href="#" class="card-link">
+                        <div class="card__content">
+                            <h2>Guides</h2>
+                            <p>Informations that the game doesn't tell you.</p>
+                            <button class="btn">Go to →</button>
+                        </div>
+                        <img class="card__image" id="NotebookImage" src="Ressources/GrandpaTrainingNotes.png" alt="Guides">
+                    </a>
                 </div>
 
                 <!-- Techniques -->
                 <div class="card card--with-image">
-                    <div class="card__content">
-                        <h2>Techniques</h2>
-                        <p>List of all Hissatsu Techniques & Kenshin.</p>
-                        <a href="#" class="btn">Go to →</a>
-                    </div>
-                    <img class="card__image" src="Ressources/hector.png" alt="Techniques">
+                    <a href="#" class="card-link">
+                        <div class="card__content">
+                            <h2>Techniques</h2>
+                            <p>List of all Hissatsu Techniques & Kenshin.</p>
+                            <button class="btn">Go to →</button>
+                        </div>
+                        <img class="card__image" src="Ressources/hector.png" alt="Techniques">
+                    </a>
                 </div>
 
                 <!-- Items -->
                 <div class="card card--with-image">
-                    <div class="card__content">
-                        <h2>Items</h2>
-                        <p>Complete list of items, equipements & how to obtain them.</p>
-                        <a href="#" class="btn">Go to →</a>
-                    </div>
-                    <img class="card__image" id="KidouImage" src="Ressources/KidouGoggles.png" alt="Items">
+                    <a href="#" class="card-link">
+                        <div class="card__content">
+                            <h2>Items</h2>
+                            <p>Complete list of items, equipements & how to obtain them.</p>
+                            <button class="btn">Go to →</button>
+                        </div>
+                        <img class="card__image" id="KidouImage" src="Ressources/KidouGoggles.png" alt="Items">
+                    </a>
                 </div>
 
                 <!-- Home -->
                 <div class="card card--with-image">
-                    <div class="card__content">
-                        <h2>Tiers</h2>
-                        <p>Discover the best characters and strategies.</p>
-                        <a href="#" class="btn">Go to →</a>
-                    </div>
-                    <img class="card__image" src="Ressources/Zanark.png">
+                    <a href="#" class="card-link">  
+                        <div class="card__content">
+                            <h2>Tiers</h2>
+                            <p>Discover the best characters and strategies.</p>
+                            <button class="btn">Go to →</button>
+                        </div>
+                        <img class="card__image" src="Ressources/Zanark.png">
+                    </a>
                 </div>
 
                 <div class="card card--with-image">
-                    <div class="card__content">
-                        <h2>Teams</h2>
-                        <p>Explore different team setups and formations.</p>
-                        <a href="#" class="btn">Go to →</a>
-                    </div>
-                    <img class="card__image" id="destinImage" src="Ressources/destin billows1.png">
+                    <a href="#" class="card-link">
+                        <div class="card__content">
+                            <h2>Teams</h2>
+                            <p>Explore different team setups and formations.</p>
+                            <button class="btn">Go to →</button>
+                        </div>
+                        <img class="card__image" id="destinImage" src="Ressources/destin billows1.png">
+                    </a>
                 </div>
             </div>
         </main>
@@ -94,8 +112,8 @@
 
         <footer class="footer">
             <p>Victory Road Wiki is an unofficial fan-created information site. All trademarks, copyrights, and related content belong to LEVEL5 Inc.<br> This site is not affiliated with or endorsed by LEVEL5 Inc.</p>
-            <p>contact:@gmail.com</p>
-            <img src=""><a href="https://discord.gg/xzhkSg64Nc">Discord</a>
+            <p>contact : majindevworks@gmail.com</p>
+            <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="/Ressources/Discord_Logo.png">Discord</a>
         </footer>
 
     </body>
