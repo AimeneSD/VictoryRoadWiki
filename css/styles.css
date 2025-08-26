@@ -139,7 +139,7 @@ h1 {
     font-size: 80px;
     font-weight: bold;
     text-transform: uppercase;
-    background: linear-gradient(to bottom,#fff36a 0%,#ffd726 50%,#f07c00 60%,#a00000 100%);
+    background: linear-gradient(to bottom,#fff36a 0%,#ffd726 50%,#f07c00 60%,#a00000 85%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
