@@ -12,10 +12,6 @@ body {
 }
 
 
-
-/* Décale le contenu principal pour ne pas passer sous la sidebar */
-
-
 .off-screen-menu{
   background: linear-gradient(180deg,#7dccf3 0%, #00b8ee 36%, #004db6 70%, #18008f 100%);
   height: 100vh;
