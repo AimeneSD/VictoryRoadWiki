@@ -33,8 +33,19 @@ function renderCharacters(list) {
     name.className = 'name';
     name.textContent = player.fullName || `${player.firstName} ${player.lastName}`;
 
-    li.appendChild(img);
-    li.appendChild(name);
+    // Lien cliquable
+    const link = document.createElement('a');
+    const fileName = (player.fullName || `${player.firstName}_${player.lastName}`)
+      .toLowerCase()
+      .replace(/\s+/g, '_');
+    link.href = `${fileName}.html`;
+
+    // Ajoute image et nom au lien
+    link.appendChild(img);
+    link.appendChild(name);
+
+    // Ajoute lien au li
+    li.appendChild(link);
     frag.appendChild(li);
   });
 
