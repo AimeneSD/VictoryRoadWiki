@@ -1,0 +1,81 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../Ressources/vr-bg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+.main {
+    align-items: center;
+}
+
+
+/* Carte de joueur */
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+}
+
+/* Carte ronde */
+.char {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+/* Image du joueur */
+.char img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Nom en bas */
+.char .name {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  z-index: 3;
+}
+
+/* Pattern + couleur selon le poste */
+.char::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: url('../Ressources/bg_soccer_pat.png') center/100px repeat;
+  mix-blend-mode: overlay; /* pour fond stylé */
+  z-index: 1;
+}
+
+/* Couleurs par poste */
+.char[data-role="gar"] { background-color: #f4c430; } /* jaune */
+.char[data-role="atk"] { background-color: #9c2928; } /* rouge */
+.char[data-role="mil"] { background-color: #1e88e5; } /* bleu */
+.char[data-role="def"] { background-color: #2e7d32; } /* vert */
