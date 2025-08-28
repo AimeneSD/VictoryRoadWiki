@@ -8,65 +8,22 @@
     "image": "char-sprites/marksprite.png",
     "number": 1,
     "element": "air",
-    "aliases": ["Mamoru Endou", "Mark"],
-    "locked": false,
-    "team": "Raimon"
-  },
-  {
-    "id": 2,
-    "firstName": "Axel",
-    "lastName": "Blaze",
-    "fullName": "Axel Blaze",
-    "role": "atk",
-    "image": "Ressources/axel.png",
-    "number": 10,
-    "element": "fire",
-    "stars": 5,
-    "aliases": ["Shuuya Gouenji", "Axel"],
-    "locked": false,
-    "team": "Raimon"
-  },
-  {
-    "id": 3,
-    "firstName": "Jude",
-    "lastName": "Sharp",
-    "fullName": "Jude Sharp",
-    "role": "mil",
-    "image": "Ressources/jude.png",
-    "number": 14,
-    "element": "earth",
-    "stars": 4,
-    "aliases": ["Yuuto Kidou", "Jude"],
-    "locked": false,
-    "team": "Raimon"
-  },
-  {
-    "id": 4,
-    "firstName": "Nathan",
-    "lastName": "Swift",
-    "fullName": "Nathan Swift",
-    "role": "def",
-    "image": "Ressources/nathan.png",
-    "number": 2,
-    "element": "wind",
-    "stars": 4,
-    "aliases": ["Ichirouta Kazemaru", "Nathan"],
-    "locked": false,
-    "team": "Raimon"
+    "alias": ["Mamoru Endou"],
+    "team": "Raimon",
+    "game": "IE1"
   },
 
-  {
-    "id": 4,
-    "firstName": "Nathan",
-    "lastName": "Swift",
-    "fullName": "Nathan Swift",
-    "role": "def",
-    "image": "Ressources/nathan.png",
-    "number": 2,
-    "element": "wind",
-    "stars": 4,
-    "aliases": ["Ichirouta Kazemaru", "Nathan"],
-    "locked": false,
-    "team": "Raimon"
+    {
+    "id": 2,
+    "firstName": "Mark",
+    "lastName": "Evans",
+    "fullName": "Mark Evans",
+    "role": "gar",
+    "image": "char-sprites/marksprite.png",
+    "number": 1,
+    "element": "air",
+    "alias": ["Mamoru Endou"],
+    "team": "Raimon",
+    "game": "IE1"
   }
 ]
