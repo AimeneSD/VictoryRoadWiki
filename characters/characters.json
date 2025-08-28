@@ -18,7 +18,7 @@
     "firstName": "Mark",
     "lastName": "Evans",
     "fullName": "Mark Evans",
-    "role": "gar",
+    "role": "coach",
     "image": "char-sprites/marksprite.png",
     "number": 1,
     "element": "air",
