@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/characters.css">
         <link rel="stylesheet" href="../css/styles.css">
         <script src="../js/script.js" defer></script>
+        <script src="../js/characters.js" defer></script>
         <link rel="icon" type="image/png" href="../Ressources/Logo.png">
     </head>
     <body>
@@ -35,29 +36,9 @@
         <main class="main">
 
             <!-- Character Grid -->
-
-            <ul class="char-grid">
-                <li class="char" data-role="gar">
-                    <img src="char-sprites/marksprite.png" alt="Mark Evans">
-                    <span class="name">Mark Evans</span>
-                </li>
-
-                <li class="char" data-role="atk">
-                    <img src="char-sprites/axel_blaze_sprite.png" alt="Axel Blaze">
-                    <span class="name">Axel Blaze</span>
-                </li>
-
-                <li class="char" data-role="mil">
-                    <img src="char-sprites/jude-sharp-sprite.png" alt="Jude Sharp">
-                    <span class="name">Jude Sharp</span>
-                </li>
-
-                <li class="char" data-role="def">
-                    <img src="char-sprites/nathan-swift-sprite.png" alt="Nathan Swift">
-                    <span class="name">Nathan Swift</span>
-                </li>
-            </ul>
-
+            
+            <ul id="charGrid" class="char-grid"></ul>
+            <span id="charCount"></span> <!-- compteur optionnel -->
 
         </main>
 
