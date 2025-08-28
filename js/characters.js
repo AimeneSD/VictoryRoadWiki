@@ -38,7 +38,7 @@ function renderCharacters(list) {
     const fileName = (player.fullName || `${player.firstName}_${player.lastName}`)
       .toLowerCase()
       .replace(/\s+/g, '_');
-    link.href = `${fileName}.html`;
+    link.href = `pages/${fileName}.html`;
 
     // Ajoute image et nom au lien
     link.appendChild(img);
