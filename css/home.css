@@ -16,18 +16,8 @@ body {
   align-items: center;
 }
 
-
-h1 {
-    font-family: Impact, Arial Black, sans-serif;
-    font-style: italic;
-    font-size: 80px;
-    font-weight: bold;
-    text-transform: uppercase;
-    background: linear-gradient(to bottom,#fff36a 0%,#ffd726 50%,#f07c00 60%,#a00000 85%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px #00000f;
+.main-logo {
+    width: 25%;
 }
 
 .descriptionsite {
