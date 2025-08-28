@@ -2,22 +2,26 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url('../Ressources/vr-bg1.png');
+    background: url('../Ressources/vr-bg1.png')no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
-    text-align: center;
 }
 
 
 .main{
   align-items: center;
+  text-align: center;
 }
 
 .main-logo {
     width: 25%;
+}
+
+@media screen  and (max-width: 1200px) {
+  .main-logo {
+    width: 50%;
+  }
+  
 }
 
 .descriptionsite {
@@ -35,12 +39,20 @@ body {
 
 /* Grille des cartes */
 .cards-container {
-  width: min(1200px, calc(100vw - 240px - 80px)); /* -80px = marge “coussin” */
+   width: min(1200px, calc(100% - 80px)); /* 80px = 40px de padding à gauche + droite */
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 100px;
+}
+
+
+@media screen  and (max-width: 1000px) {
+  .cards-container {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Carte avec image à droite */
@@ -83,12 +95,11 @@ body {
 
 .btn {
   display: flex;
-  margin-top: 10vh;
+  margin-top: 3vh;
   padding: 10px 16px;
   border-radius: 20px;
   background: #00b8ee;
   color: #fff;
-  font-weight: 700;
   text-decoration: none;
   transition: transform .1s, background .2s;
 }
