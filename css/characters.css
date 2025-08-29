@@ -3,7 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     background-image: url('../Ressources/vr-bg2.jpg');
-    backdrop-filter: blur(10px) brightness(0.5);
+    backdrop-filter: blur(10px) brightness(0.3);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
