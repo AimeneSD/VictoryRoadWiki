@@ -215,12 +215,11 @@ footer a:visited {
 }
 
 .navigation-path span {
-  margin: -2px;
   color: #ffffff;
 }
 
 .navigation-path .current {
-  color: #e6e6e6;
+  color: #919cff;
   cursor: default;
 }
 
