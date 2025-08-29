@@ -200,3 +200,30 @@ footer a:visited {
 }
 
 
+/* BREADCRUMBS */
+
+.navigation-path {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.navigation-path a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.navigation-path span {
+  margin: -2px;
+  color: #ffffff;
+}
+
+.navigation-path .current {
+  color: #e6e6e6;
+  cursor: default;
+}
+
+.navigation-path a:hover {
+  text-decoration: underline;
+}

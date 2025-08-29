@@ -3,7 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     background-image: url('../Ressources/vr-bg2.jpg');
-    backdrop-filter: blur(15px) brightness(0.2);
+    backdrop-filter: blur(10px) brightness(0.5);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -31,8 +31,8 @@ body {
 /* Carte ronde */
 .char {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 120px; /* Taille des cartes */
+  height: 120px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
