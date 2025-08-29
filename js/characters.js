@@ -40,6 +40,12 @@ function renderCharacters(list) {
       .replace(/\s+/g, '_');
     link.href = `pages/${fileName}.html`;
 
+    const link2 = document.querySelectorAll('.char');
+    link2.href = `pages/${fileName}.html`;
+
+    const link3 = document.querySelectorAll('.char img');
+    link3.href = `pages/${fileName}.html`;
+
     // Ajoute image et nom au lien
     link.appendChild(img);
     link.appendChild(name);
