@@ -216,19 +216,25 @@ footer a:visited {
 /* BREADCRUMBS */
 
 .navigation-path {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
+  position: relative;
+  left: -50vh;
+  top: 5vh;
+  font-size: 100%;
 }
 
 .navigation-path a {
   color: #ffffff;
-  text-decoration: none;
   margin: 0 5px;
 }
 
 .navigation-path span {
   color: #ffffff;
+}
+
+.navigation-path h1{
+  margin-top: 1vh;
+  color: #fff;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .navigation-path .current {
