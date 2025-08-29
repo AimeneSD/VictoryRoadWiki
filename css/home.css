@@ -13,13 +13,17 @@ body {
   text-align: center;
 }
 
+
+
 .main-logo {
     width: 25%;
+    user-select: none;
 }
 
-@media screen  and (max-width: 1200px) {
+@media screen  and (max-width: 1528px) {
   .main-logo {
     width: 50%;
+    user-select: none;
   }
   
 }
@@ -35,6 +39,15 @@ body {
     word-spacing: 2px;
     -webkit-text-stroke: 0.2px #363636;
     text-shadow: 2px 2px 4px #00000088;
+    user-select: none;
+}
+
+@media screen  and (max-width: 1528px) {
+  .descriptionsite{
+    font-size: 7vw;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 
 /* Grille des cartes */

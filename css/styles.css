@@ -7,10 +7,16 @@
     font-family: "Noto Sans",Arial, Helvetica, sans-serif;
 }
 
+@media screen and (min-width:1201px){
+    .main{
+      margin-left: 12.5vw;
+    }
+}
+
 
 .sidebar {
     background: linear-gradient(130deg, #7dccf3 0%, #00b8ee 36%, #004db6 70%, #18008f 100%);
-    width: 240px;
+    width: 12.5vw;
     height: 100vh;
     position: fixed;
     top : 0;
@@ -18,7 +24,7 @@
     overflow-y: auto;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1528px) {
   .sidebar {
     position: fixed;
     top: 0;
@@ -39,7 +45,7 @@
   text-align: left;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1528px) {
   .sidebar .menu{
     align-items: center;
     text-align: left;
@@ -62,11 +68,12 @@
   line-height: 60px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1528px) {
   .sidebar .menu .item a{
     text-align: left;
-    padding: 30px 5px;
-    font-size: 200%;
+    padding: 20px 5px;
+    font-size: 2vh;
+    line-height: 0px;
   }
   
 }
@@ -83,7 +90,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1528px) {
   .sidebar-logo .logo {
     width: 40%;
   }
@@ -97,7 +104,7 @@
     margin-right: 15px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1528px) {
   .redirect-image{
     margin-right: 8px;
     width: 5vh;
@@ -116,7 +123,7 @@
     flex-direction: column;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1528px) {
     .hamburger-menu {
         height: 50px;
       width: 50px;
@@ -178,9 +185,15 @@
 
 @media screen and (max-width:1200px){
   .footer{
-    font-size: 200%;
+    font-size: 150%;
+  }
+
+  .footer p{
+    margin-top: 3vh;
+    font-size: 75%;
   }
 }
+
 .footer a {
     color: rgb(173, 173, 173);
     text-decoration: none;
