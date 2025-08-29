@@ -198,11 +198,10 @@
 
 .footer a {
     color: rgb(173, 173, 173);
-    text-decoration: none;
 }
 
 footer a:visited {
-    color: rgb(100, 100, 100);
+    color: rgb(173, 173, 173);
     text-decoration: none;
 }
 
@@ -218,11 +217,20 @@ footer a:visited {
 /* BREADCRUMBS */
 
 .navigation-path {
-  position: relative;
-  left: -50vh;
-  top: 3vh;
+  position: fixed;
+  left: 25%;
+  top: 3%;
   font-size: 100%;
   user-select: none;
+}
+
+@media screen and (max-width:1528px) {
+  .navigation-path{
+    font-size: 90%;
+    position: fixed;
+    left: 2%;
+  }
+  
 }
 
 .navigation-path a {

@@ -7,7 +7,7 @@
     "role": "gar",
     "image": "char-sprites/marksprite.png",
     "number": 1,
-    "element": "air",
+    "element": "ground",
     "alias": ["Mamoru Endou"],
     "team": "Raimon",
     "game": "IE1"
@@ -21,9 +21,9 @@
     "role": "coach",
     "image": "char-sprites/marksprite.png",
     "number": 1,
-    "element": "air",
+    "element": "ground",
     "alias": ["Mamoru Endou"],
     "team": "Raimon",
-    "game": "IE1"
+    "game": "IE1" 
   }
 ]
