@@ -13,10 +13,16 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
+  
 }
 
 
 /* Carte de joueur */
+
+.character-grid-container {
+  position: relative;
+  margin-bottom: 1vh;
+}
 
 .char-grid {
   margin-top: 20%; /* MARGE DES CARTES */
@@ -91,5 +97,14 @@ body {
 
 .filter-content {
   position: fixed;
-  padding: 10px 20px 0px 20px;
+  left: 25%;
+  top: 15%;
+  font-size: 100%;
+  user-select: none;
+}
+
+@media screen and (max-width:1528px){
+  .filter-content{
+    left: 2%;
+  }
 }
