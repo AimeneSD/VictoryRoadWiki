@@ -1,13 +1,34 @@
 body {
+    /* Layout global en GRID pour coller la sidebar au footer */
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 280px 1fr;   /* largeur sidebar + contenu */
+    grid-template-rows: auto 1fr auto;  /* header, main, footer */
+    gap: 0;                              /* aucun espace entre éléments structuraux */
+
+    /* Fond */
     background-image: url('../Ressources/vr-bg2.jpg');
-    backdrop-filter: blur(10px) brightness(0.3);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-size: auto;            /* taille d'origine */
+    background-repeat: repeat;        /* répète si l'image est plus petite que l'écran */
+    background-position: top left;    /* coin haut gauche */
+    background-attachment: fixed;     /* ne bouge pas au scroll */
 }
+
+/* Assombrit le fond sans toucher au background-image */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* intensité du voile sombre */
+  pointer-events: none;         /* ne bloque pas les clics */
+}
+
+/* Placement des zones structurelles */
+header.header { grid-column: 2; grid-row: 1; }
+.sidebar { grid-column: 1; grid-row: 1 / -1; align-self: stretch; margin: 0; }
+.navigation-path { grid-column: 2; grid-row: 1; max-width: 1200px; margin: 10px auto 0; }
+.main { grid-column: 2; grid-row: 2; }
+footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !important; }
 
 .main {
   display: flex;
@@ -15,7 +36,6 @@ body {
   text-align: center;
   
 }
-
 
 /* Carte de joueur */
 
@@ -25,12 +45,13 @@ body {
 }
 
 .char-grid {
-  margin-top: 20%; /* MARGE DES CARTES */
+  margin: 40px auto;                            /* espace raisonnable + centrage */
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 60px 30px; /* ESPACE ENTRE LES CARTES */
-  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;                                    /* espace uniforme */
+  max-width: 1200px;                            /* largeur max pour aligner comme l'exemple */
   padding: 0;
+  justify-items: center;                        /* cartes centrées dans leur colonne */
 }
 
 /* Carte ronde */
@@ -96,18 +117,29 @@ body {
 /* Filtre */
 
 .filter-content {
-  position: fixed;
-  left: 25%;
-  top: 15%;
+  position: static;            /* dans le flux normal */
+  margin: 20px auto;           /* centre horizontalement */
+  max-width: 1200px;           /* même largeur que la grille */
   font-size: 100%;
   user-select: none;
+  text-align: center;
 }
 
-@media screen and (max-width:1528px){
-  .filter-content{
-    left: 2%;
-  }
+/* Titre aligné et borné comme le reste */
+.main h1{
+  text-align: center;
+  margin: 20px auto 10px;
+  max-width: 1200px;
 }
+
+/* Empêche les éléments de rester accrochés au scroll */
+.main h1,
+h1,
+.navigation-path {
+  position: static !important;
+  top: auto !important;
+}
+
 
 /* Titre du filtre */
 
@@ -147,4 +179,3 @@ body {
 .filter-options input[type="checkbox"]:checked + img {
   background-color: rgba(122, 0, 0, 0.671);
 }
-
