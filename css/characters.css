@@ -108,3 +108,43 @@ body {
     left: 2%;
   }
 }
+
+/* Titre du filtre */
+
+.filter-content h3 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  font-size: 17px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/*Images des options de filtre */
+
+.filter-options img{
+  width: 50px;
+  height: 50px;
+  background-color: #00000056;
+  border-radius: 40%;
+}
+
+.filter-options input[type="checkbox"] {
+  display: none;
+}
+
+.filter-options label {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px; /* Espacement entre les options */
+}
+
+.filter-options label:hover img {
+  transform: scale(1.1);
+  transition: transform .2s;
+}
+
+/* Animation quand la case est cochée*/
+.filter-options input[type="checkbox"]:checked + img {
+  background-color: rgba(122, 0, 0, 0.671);
+}
+
