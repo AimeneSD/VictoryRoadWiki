@@ -1,21 +1,56 @@
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-image: url('../Ressources/vr-bg2.jpg');
-    backdrop-filter: blur(10px) brightness(0.3);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+:root{
+  --cols: 6;          /* colonnes par défaut (desktop) */
+  --gap-x: 50px;      /* écart horizontal entre cartes */
+  --gap-y: 80px;      /* écart vertical entre lignes (plus grand pour laisser passer les noms) */
+  --card: 140px;      /* diamètre des cartes */
 }
+
+body {
+    /* Layout global en GRID pour coller la sidebar au footer */
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;   /* largeur sidebar + contenu */
+    grid-template-rows: auto 1fr auto;  /* header, main, footer */
+    gap: 0;                              /* aucun espace entre éléments structuraux */
+
+    /* Fond */
+    background-image: url('../Ressources/vr-bg2.jpg');
+    background-size: auto;            /* taille d'origine */
+    background-repeat: repeat;        /* répète si l'image est plus petite que l'écran */
+    background-position: top left;    /* coin haut gauche */
+    background-attachment: fixed;     /* ne bouge pas au scroll */
+}
+
+/* Assombrit le fond sans toucher au background-image */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* intensité du voile sombre */
+  pointer-events: none;         /* ne bloque pas les clics */
+}
+
+/* Placement des zones structurelles */
+header.header { grid-column: 2; grid-row: 1; }
+.sidebar { grid-column: 1; grid-row: 1 / -1; align-self: stretch; margin: 0; }
+.navigation-path { grid-column: 1 / -1; grid-row: 1; max-width: 1200px;
+  margin: 10px 0 0;
+  width: 100%;
+  padding-left: var(--gap-x);
+  text-align: left;
+  position: relative;
+  z-index: 5;          /* au-dessus du voile sombre */
+  color: white;
+}
+.main { grid-column: 1 / -1; grid-row: 2; }
+footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !important; }
 
 .main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;   /* empile les sections (titre, filtre, grille) */
+  align-items: center;      /* centre horizontalement tout le contenu */
   text-align: center;
-  
 }
-
 
 /* Carte de joueur */
 
@@ -25,21 +60,26 @@ body {
 }
 
 .char-grid {
-  margin-top: 20%; /* MARGE DES CARTES */
+  margin-top: 40px;                             /* espace au-dessus */
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 60px 30px; /* ESPACE ENTRE LES CARTES */
-  list-style: none;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gap-x);
+  row-gap: var(--gap-y);
+  max-width: 1200px;                            /* largeur max (réduit pour desktop) */
+  width: 100%;                                  /* occupe la largeur dispo puis bornée par max-width */
+  min-width: 0;
   padding: 0;
+  justify-items: center;                        /* cartes centrées dans leur colonne */
+  justify-content: center;                      /* centre la distribution des colonnes */
 }
 
 /* Carte ronde */
 .char {
   position: relative;
-  width: 140px; /* Taille des cartes */
-  height: 140px;
+  width: var(--card);
+  height: var(--card);
   border-radius: 50%;
-  overflow: none;
+  overflow: visible;  /* laisse le badge du nom sortir du cercle */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,15 +89,19 @@ body {
 
 /* Image du joueur */
 .char img {
-  width: 96.5%;
-  height: 96.5%;
-  object-fit:cover;
+  width: 97.5%;              /* image = exactement la taille de la carte */
+  height: 97.5%;
+  display: block;           /* supprime l'espace inline et colle aux bords */
+  object-fit: cover;
   border-radius: 50%;
+  clip-path: circle(50% at 50% 50%); /* force le rognage en cercle, même si le parent est overflow: visible */
+  margin: auto;
 }
 
 /* Nom en bas */
 .char .name {
   position: relative;
+  z-index: 2;         /* au-dessus du ::before overlay */
   margin-top: 8px;
   background: rgba(0,0,0,0.6);
   color: #fff;
@@ -66,6 +110,13 @@ body {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+}
+
+@media (max-width: 600px){
+  .char .name{ font-size: 12px; padding: 3px 8px; margin-top: 6px; }
+}
+@media (max-width: 420px){
+  .char .name{ font-size: 11px; padding: 3px 8px; margin-top: 6px; }
 }
 
 .char a{
@@ -96,18 +147,39 @@ body {
 /* Filtre */
 
 .filter-content {
-  position: fixed;
-  left: 25%;
-  top: 15%;
+  position: static;            /* dans le flux normal */
+  margin: 20px 0;              /* aligne à gauche, même padding que la grille */
+  max-width: 1200px;
+  text-align: left;
+  width: 100%;
+  padding-left: var(--gap-x);
   font-size: 100%;
   user-select: none;
+  position: relative;
+  z-index: 5;
+  color: white;
 }
 
-@media screen and (max-width:1528px){
-  .filter-content{
-    left: 2%;
-  }
+/* Titre aligné et borné comme le reste */
+.main h1{
+  text-align: left;
+  margin: 20px 0 10px;
+  max-width: 1200px;
+  width: 100%;
+  padding-left: var(--gap-x);
+  position: relative;
+  z-index: 5;
+  color: white;
 }
+
+/* Empêche les éléments de rester accrochés au scroll */
+.main h1,
+h1,
+.navigation-path {
+  position: static !important;
+  top: auto !important;
+}
+
 
 /* Titre du filtre */
 
@@ -148,3 +220,32 @@ body {
   background-color: rgba(122, 0, 0, 0.671);
 }
 
+/* ================= Responsive breakpoints ================= */
+@media (max-width: 1280px){
+  :root{ --cols: 6; --gap-x: 40px; --gap-y: 56px; }
+}
+@media (max-width: 1024px){
+  :root{ --cols: 5; --gap-x: 32px; --gap-y: 48px; --card: 130px; }
+}
+@media (max-width: 800px){
+  :root{ --cols: 4; --gap-x: 24px; --gap-y: 40px; --card: 110px; }
+  .filter-options img{ width: 42px; height: 42px; }
+}
+@media (max-width: 600px){
+  :root{ --cols: 3; --gap-x: 16px; --gap-y: 36px; --card: 95px; }
+  .main h1{ font-size: clamp(20px, 5vw, 28px); }
+}
+@media (max-width: 420px){
+  :root{ --cols: 2; --gap-x: 12px; --gap-y: 32px; --card: 80px; }
+  .filter-options img{ width: 36px; height: 36px; }
+}
+
+
+/* Aligne correctement à gauche en tenant compte de la sidebar (desktop) */
+@media (min-width: 1025px){
+  .navigation-path,
+  .main h1,
+  .filter-content {
+    padding-left: calc(280px + var(--gap-x)); /* 280px = largeur sidebar */
+  }
+}
