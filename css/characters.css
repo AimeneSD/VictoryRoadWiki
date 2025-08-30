@@ -61,6 +61,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
 
 .char-grid {
   margin-top: 40px;                             /* espace au-dessus */
+  margin-bottom: 40px;                          /* espace en-dessous */ 
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
   column-gap: var(--gap-x);
