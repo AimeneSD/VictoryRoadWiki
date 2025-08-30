@@ -22,7 +22,7 @@ body {
   margin-top: 20%; /* MARGE DES CARTES */
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 60px 40px; /* ESPACE ENTRE LES CARTES */
+  gap: 60px 30px; /* ESPACE ENTRE LES CARTES */
   list-style: none;
   padding: 0;
 }
@@ -30,8 +30,8 @@ body {
 /* Carte ronde */
 .char {
   position: relative;
-  width: 130px; /* Taille des cartes */
-  height: 130px;
+  width: 140px; /* Taille des cartes */
+  height: 140px;
   border-radius: 50%;
   overflow: none;
   display: flex;
@@ -47,8 +47,6 @@ body {
   height: 96.5%;
   object-fit:cover;
   border-radius: 50%;
-
-  clip-path: circle(50% at 50% 50%); /* force l'image à rester dans le rond */
 }
 
 /* Nom en bas */
