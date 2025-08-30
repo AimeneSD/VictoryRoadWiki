@@ -140,8 +140,8 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
 .char[data-role="atk"] { background-color: #9c2928; } /* rouge */
 .char[data-role="mil"] { background-color: #0b508d; } /* bleu */
 .char[data-role="def"] { background-color: #2e7d32; } /* vert */
-.char[data-role="coach"] { background-color: #6a1b9a; } /* violet */
-.char[data-role="sup"] { background-color: #ff8f00; } /* orange */
+.char[data-role="coach"] { background-color: #3ba39b; } /* turquoise */
+.char[data-role="sup"] { background-color: #a33c75; } /* rose */
 
 .char:hover {transform: translateY(-3px); transition: transform .2s;}
 
