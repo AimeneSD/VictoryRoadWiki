@@ -15,7 +15,7 @@ body {
 
     /* Fond */
     background-image: url('../Ressources/vr-bg2.jpg');
-    background-size: auto;            /* taille d'origine */
+    background-size: cover;            /* taille d'origine */
     background-repeat: repeat;        /* répète si l'image est plus petite que l'écran */
     background-position: top left;    /* coin haut gauche */
     background-attachment: fixed;     /* ne bouge pas au scroll */
