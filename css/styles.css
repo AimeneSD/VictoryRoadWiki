@@ -217,7 +217,7 @@ footer a:visited {
 /* BREADCRUMBS */
 
 .navigation-path {
-  position: fixed;
+  position: relative;
   left: 25%;
   top: 3%;
   font-size: 100%;
