@@ -1,3 +1,4 @@
+/* ===================== Variables (root) ===================== */
 :root{
   --cols: 6;          /* colonnes par défaut (desktop) */
   --gap-x: 50px;      /* écart horizontal entre cartes */
@@ -5,6 +6,7 @@
   --card: 140px;      /* diamètre des cartes */
 }
 
+/* ===================== Layout global (Grid + Background) ===================== */
 body {
     /* Layout global en GRID pour coller la sidebar au footer */
     min-height: 100vh;
@@ -16,11 +18,11 @@ body {
     /* Fond */
     background-image: url('../Ressources/vr-bg2.jpg');
     background-size: cover;            /* taille d'origine */
-    background-repeat: repeat;        /* répète si l'image est plus petite que l'écran */
     background-position: top left;    /* coin haut gauche */
     background-attachment: fixed;     /* ne bouge pas au scroll */
 }
 
+/* ===================== Voile sombre au-dessus du fond ===================== */
 /* Assombrit le fond sans toucher au background-image */
 body::before{
   content: "";
@@ -30,7 +32,7 @@ body::before{
   pointer-events: none;         /* ne bloque pas les clics */
 }
 
-/* Placement des zones structurelles */
+/* ===================== Placement structurel (header/sidebar/nav/main/footer) ===================== */
 header.header { grid-column: 2; grid-row: 1; }
 .sidebar { grid-column: 1; grid-row: 1 / -1; align-self: stretch; margin: 0; }
 .navigation-path { grid-column: 1 / -1; grid-row: 1; max-width: 1200px;
@@ -45,6 +47,7 @@ header.header { grid-column: 2; grid-row: 1; }
 .main { grid-column: 1 / -1; grid-row: 2; }
 footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !important; }
 
+/* ===================== Conteneur principal (colonne) ===================== */
 .main {
   display: flex;
   flex-direction: column;   /* empile les sections (titre, filtre, grille) */
@@ -52,13 +55,14 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   text-align: center;
 }
 
-/* Carte de joueur */
-
+/* ===================== Zone grille des personnages ===================== */
+/* --------------------- Conteneur de la grille --------------------- */
 .character-grid-container {
   position: relative;
   margin-bottom: 1vh;
 }
 
+/* --------------------- Grille (CSS Grid) --------------------- */
 .char-grid {
   margin-top: 40px;                             /* espace au-dessus */
   margin-bottom: 40px;                          /* espace en-dessous */ 
@@ -74,7 +78,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   justify-content: center;                      /* centre la distribution des colonnes */
 }
 
-/* Carte ronde */
+/* ===================== Carte ronde ===================== */
 .char {
   position: relative;
   width: var(--card);
@@ -88,9 +92,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-
-
-/* Image du joueur */
+/* --------------------- Image du joueur --------------------- */
 .char img {
   width: 97.5%;              /* image = exactement la taille de la carte */
   height: 97.5%;
@@ -101,7 +103,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   margin: auto;
 }
 
-/* Nom en bas */
+/* --------------------- Libellé du nom --------------------- */
 .char .name {
   position: relative;
   z-index: 2;         /* au-dessus du ::before overlay */
@@ -122,11 +124,12 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   .char .name{ font-size: 11px; padding: 3px 8px; margin-top: 6px; }
 }
 
+/* --------------------- Lien interne --------------------- */
 .char a{
   text-decoration: none;
 }
 
-/* Pattern + couleur selon le poste */
+/* --------------------- Motif overlay --------------------- */
 .char::before {
   content: "";
   position: absolute;
@@ -137,7 +140,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   z-index: 1;
 }
 
-/* Couleurs par poste */
+/* ===================== Couleurs par poste ===================== */
 .char[data-role="gar"] { background-color: #dddddd; } /* jaune */
 .char[data-role="atk"] { background-color: #9c2928; } /* rouge */
 .char[data-role="mil"] { background-color: #da9800; } /* bleu */
@@ -145,12 +148,11 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
 .char[data-role="coach"] { background-color: #3ba39b; } /* turquoise */
 .char[data-role="sup"] { background-color: #a33c75; } /* rose */
 
+/* --------------------- Effet au survol --------------------- */
 .char:hover {transform: translateY(-3px); transition: transform .2s;}
 
-/* Filtre */
-
+/* ===================== Zone filtres ===================== */
 .filter-content {
-  position: relative;            /* dans le flux normal */
   margin: 20px 0;              /* aligne à gauche, même padding que la grille */
   max-width: 1200px;
   text-align: left;
@@ -158,18 +160,11 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   padding-left: var(--gap-x);
   font-size: 100%;
   user-select: none;
-  right: 21vw;
   z-index: 5;
   color: white;
 }
 
-@media screen and (max-width:1528px) {
-   .filter-content{
-    right: 1vw
-   }
-}
-
-/* Titre aligné et borné comme le reste */
+/* ===================== Titre de page ===================== */
 .main h1{
   text-align: left;
   margin: 20px 0 10px;
@@ -181,17 +176,15 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   color: white;
 }
 
-/* Empêche les éléments de rester accrochés au scroll */
+/* ===================== Anti-sticky (évite l'accrochage au scroll) ===================== */
 .main h1,
-h1,
 .navigation-path {
   position: static !important;
   top: auto !important;
 }
 
 
-/* Titre du filtre */
-
+/* ===================== Titre du bloc filtres ===================== */
 .filter-content h3 {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
@@ -201,8 +194,12 @@ h1,
   margin-top: 10px;
 }
 
-/*Images des options de filtre */
+@media (min-width: 1025px){
+  .filter-content { 
+    margin-left: -55vh; }
+}
 
+/* --------------------- Icônes des options --------------------- */
 .filter-options img{
   width: 50px;
   height: 50px;
@@ -225,12 +222,12 @@ h1,
   transition: transform .2s;
 }
 
-/* Animation quand la case est cochée*/
+/* --------------------- État coché --------------------- */
 .filter-options input[type="checkbox"]:checked + img {
-  background-color: rgba(122, 0, 0, 0.671);
+  background-color: rgba(255, 255, 255, 0.671);
 }
 
-/* ================= Responsive breakpoints ================= */
+/* ===================== Points de rupture (responsive) ===================== */
 @media (max-width: 1280px){
   :root{ --cols: 6; --gap-x: 40px; --gap-y: 56px; }
 }
@@ -251,7 +248,7 @@ h1,
 }
 
 
-/* Aligne correctement à gauche en tenant compte de la sidebar (desktop) */
+/* ===================== Alignement desktop (avec sidebar) ===================== */
 @media (min-width: 1025px){
   .navigation-path,
   .main h1,
