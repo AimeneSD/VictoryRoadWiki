@@ -88,6 +88,8 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
+
+
 /* Image du joueur */
 .char img {
   width: 97.5%;              /* image = exactement la taille de la carte */
@@ -157,8 +159,15 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   font-size: 100%;
   user-select: none;
   position: relative;
+  right:19%;
   z-index: 5;
   color: white;
+}
+
+@media screen and (max-width:1528px) {
+   .filter-content{
+    right: 1vw
+   }
 }
 
 /* Titre aligné et borné comme le reste */
