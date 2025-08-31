@@ -150,7 +150,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
 /* Filtre */
 
 .filter-content {
-  position: static;            /* dans le flux normal */
+  position: relative;            /* dans le flux normal */
   margin: 20px 0;              /* aligne à gauche, même padding que la grille */
   max-width: 1200px;
   text-align: left;
@@ -158,8 +158,7 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   padding-left: var(--gap-x);
   font-size: 100%;
   user-select: none;
-  position: relative;
-  right:19%;
+  right: 21vw;
   z-index: 5;
   color: white;
 }
