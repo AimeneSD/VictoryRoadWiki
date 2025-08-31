@@ -6,7 +6,6 @@
     "fullName": "Mark Evans",
     "role": "gar",
     "image": "char-sprites/mark_evans_sprite.png",
-    "number": 1,
     "element": "mountain",
     "team": "Raimon",
     "game": "IE1"
@@ -19,7 +18,6 @@
     "fullName": "Axel Blaze",
     "role": "atk",
     "image": "char-sprites/axel_blaze_sprite.png",
-    "number": 10,
     "element": "fire",
     "team": "Raimon",
     "game": "IE1"
@@ -31,7 +29,6 @@
     "fullName": "Jude Sharp",
     "role": "mil",
     "image": "char-sprites/jude_sharp_sprite.png",
-    "number": 14,
     "element": "forest",
     "team": "Raimon",
     "game": "IE1"
@@ -43,7 +40,6 @@
     "fullName": "Nathan Swift",
     "role": "def",
     "image": "char-sprites/nathan_swift_sprite.png",
-    "number": 10,
     "element": "wind",
     "team": "Raimon",
     "game": "IE1"
@@ -55,7 +51,6 @@
     "fullName": "Jack Wallside",
     "role": "def",
     "image": "char-sprites/jack_wallside_sprite.png",
-    "number": 11,
     "element": "mountain",
     "team": "Raimon",
     "game": "IE1"
@@ -123,53 +118,224 @@
     "fullName": "Scott Banyan",
     "role": "def",
     "image": "char-sprites/scott_banyan_sprite.png",
-    "number": 2,
     "element": "ice",
-    "alias": ["Kazemaru Ichirouta"],
     "team": "Raimon",
-    "game": "IE1"
+    "game": "IE2"
   },
   {
     "id": 12,
     "firstName": "Victoria",
     "lastName": "Vanguard",
     "fullName": "Victoria Vanguard",
-    "role": "coach",
-    "image": "char-sprites/xaviersprite.png",
-    "number": 2,
-    "element": "ice",
-    "alias": ["Kazemaru Ichirouta"],
+    "role": "mil",
+    "image": "char-sprites/victoria_vanguard_sprite.png",
+    "element": "wind",
     "team": "Raimon",
-    "game": "IE1"
+    "game": "IE2"
   },
   {
     "id": 13,
-    "firstName": "Kevin",
-    "lastName": "Dragonfly",
-    "fullName": "Kevin Dragonfly",
-    "role": "gar",
-    "image": "char-sprites/kevinsprite.png",
-    "number": 3,
+    "firstName": "Caleb",
+    "lastName": "Stonewall",
+    "fullName": "Caleb Stonewall",
+    "role": "mil",
+    "image": "char-sprites/caleb_stonewall_sprite.png",
     "element": "wind",
-    "alias": ["Kidou Yuuto"],
-    "team": "Raimon",
-    "game": "IE1"
+    "team": "RoyalA",
+    "game": "IE2"
   },
   {
     "id": 14,
-    "firstName": "Kevin",
-    "lastName": "Dragonfly",
-    "fullName": "Kevin Dragonfly",
-    "role": "coach",
-    "image": "char-sprites/kevinsprite.png",
+    "firstName": "Byron",
+    "lastName": "Love",
+    "fullName": "Byron Love",
+    "role": "mil",
+    "image": "char-sprites/byron_love_sprite.png",
     "number": 3,
     "element": "wind",
-    "alias": ["Kidou Yuuto"],
-    "team": "Raimon",
+    "team": "Zeus",
     "game": "IE1"
   },
   {
     "id": 15,
+    "firstName": "Janus",
+    "lastName":"",
+    "fullName": "Janus",
+    "role": "mil",
+    "image": "char-sprites/janus_sprite.png",
+    "element": "forest",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 16,
+    "firstName": "Dvalin",
+    "lastName": "",
+    "fullName": "Dvalin",
+    "role": "gar",
+    "image": "char-sprites/dvalin_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+    {
+    "id": 17,
+    "firstName": "Zell",
+    "lastName": "",
+    "fullName": "Zell",
+    "role": "atk",
+    "image": "char-sprites/zell_sprite.png",
+    "element": "wind",
+    "team": "Alius",
+    "game": "IE2"
+  },
+
+  {
+    "id": 18,
+    "firstName": "Gazelle",
+    "lastName": "",
+    "fullName": "Gazelle",
+    "role": "atk",
+    "image": "char-sprites/gazelle_sprite.png",
+    "element": "wind",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 19,
+    "firstName": "Icer",
+    "lastName": "",
+    "fullName": "Icer",
+    "role": "mil",
+    "image": "char-sprites/icer_sprite.png",
+    "element": "wind",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 20,
+    "firstName": "Gocker",
+    "lastName": "",
+    "fullName": "Gocker",
+    "role": "def",
+    "image": "char-sprites/gocker_sprite.png",
+    "element": "mountain",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 21,
+    "firstName": "Clear",
+    "lastName": "",
+    "fullName": "Clear",
+    "role": "def",
+    "image": "char-sprites/clear_sprite.png",
+    "element": "wind",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 22,
+    "firstName": "Torch",
+    "lastName": "",
+    "fullName": "Torch",
+    "role": "atk",
+    "image": "char-sprites/torch_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 23,
+    "firstName": "Bomber",
+    "lastName": "",
+    "fullName": "Bomber",
+    "role": "mil",
+    "image": "char-sprites/bomber_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  
+  {
+    "id": 24,
+    "firstName": "Neppten",
+    "lastName": "",
+    "fullName": "Neppten",
+    "role": "atk",
+    "image": "char-sprites/neppten_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 25,
+    "firstName": "Lean",
+    "lastName": "",
+    "fullName": "Lean",
+    "role": "mil",
+    "image": "char-sprites/lean_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 26,
+    "firstName": "Xene",
+    "lastName": "",
+    "fullName": "Xene",
+    "role": "atk",
+    "image": "char-sprites/xene_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 27,
+    "firstName": "Bellatrix",
+    "lastName": "",
+    "fullName": "Bellatrix",
+    "role": "mil",
+    "image": "char-sprites/bellatrix_sprite.png",
+    "element": "wind",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 28,
+    "firstName": "Wittz",
+    "lastName": "",
+    "fullName": "Wittz",
+    "role": "atk",
+    "image": "char-sprites/wittz_sprite.png",
+    "element": "forest",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 29,
+    "firstName": "Kormer",
+    "lastName": "",
+    "fullName": "Kormer",
+    "role": "mil",
+    "image": "char-sprites/kormer_sprite.png",
+    "element": "fire",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 30,
+    "firstName": "Zohen",
+    "lastName": "",
+    "fullName": "Zohen",
+    "role": "def",
+    "image": "char-sprites/zohen_sprite.png",
+    "element": "mountain",
+    "team": "Alius",
+    "game": "IE2"
+  },
+  {
+    "id": 31,
     "firstName": "Eliot",
     "lastName": "Griffin",
     "fullName": "Eliot Griffin",
@@ -182,7 +348,7 @@
     "game": "IE1"
   },
   {
-    "id": 16,
+    "id": 32,
     "firstName": "Eliot",
     "lastName": "Griffin",
     "fullName": "Eliot Griffin",
@@ -195,7 +361,7 @@
     "game": "IE1"
   },
     {
-    "id": 1,
+    "id": 33,
     "firstName": "Mark",
     "lastName": "Evans",
     "fullName": "Mark Evans",
@@ -208,7 +374,7 @@
   },
 
   {
-    "id": 2,
+    "id": 34,
     "firstName": "Axel",
     "lastName": "Blaze",
     "fullName": "Axel Blaze",
@@ -220,7 +386,7 @@
     "game": "IE1"
   },
   {
-    "id": 3,
+    "id": 35,
     "firstName": "Jude",
     "lastName": "Sharp",
     "fullName": "Jude Sharp",
@@ -232,7 +398,7 @@
     "game": "IE1"
   },
   {
-    "id": 4,
+    "id": 36,
     "firstName": "Nathan",
     "lastName": "Swift",
     "fullName": "Nathan Swift",
@@ -244,7 +410,7 @@
     "game": "IE1"
   },
   {
-    "id": 5,
+    "id": 37,
     "firstName": "Jack",
     "lastName": "Wallside",
     "fullName": "Jack Wallside",
@@ -256,7 +422,7 @@
     "game": "IE1"
   },
   {
-    "id": 6,
+    "id": 38,
     "firstName": "Kevin",
     "lastName": "Dragonfly",
     "fullName": "Kevin Dragonfly",
@@ -267,7 +433,7 @@
     "game": "IE1"
   },
   {
-    "id": 7,
+    "id": 39,
     "firstName": "Erik",
     "lastName": "Eagle",
     "fullName": "Erik Eagle",
@@ -279,7 +445,7 @@
   },
   
   {
-    "id": 8,
+    "id": 40,
     "firstName": "Shawn",
     "lastName": "Froste",
     "fullName": "Shawn Froste",
@@ -290,7 +456,7 @@
     "game": "IE2"
   },
   {
-    "id": 9,
+    "id": 41,
     "firstName": "Darren",
     "lastName": "Lachance",
     "fullName": "Darren Lachance",
@@ -301,7 +467,7 @@
     "game": "IE2"
   },
   {
-    "id": 10,
+    "id": 42,
     "firstName": "Hurley",
     "lastName": "Kane",
     "fullName": "Hurley Kane",
@@ -312,202 +478,7 @@
     "game": "IE2"
   },
   {
-    "id": 11,
-    "firstName": "Scott",
-    "lastName": "Banyan",
-    "fullName": "Scott Banyan",
-    "role": "def",
-    "image": "char-sprites/scott_banyan_sprite.png",
-    "number": 2,
-    "element": "ice",
-    "alias": ["Kazemaru Ichirouta"],
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 12,
-    "firstName": "Victoria",
-    "lastName": "Vanguard",
-    "fullName": "Victoria Vanguard",
-    "role": "coach",
-    "image": "char-sprites/xaviersprite.png",
-    "number": 2,
-    "element": "ice",
-    "alias": ["Kazemaru Ichirouta"],
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 13,
-    "firstName": "Kevin",
-    "lastName": "Dragonfly",
-    "fullName": "Kevin Dragonfly",
-    "role": "gar",
-    "image": "char-sprites/kevinsprite.png",
-    "number": 3,
-    "element": "wind",
-    "alias": ["Kidou Yuuto"],
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 14,
-    "firstName": "Kevin",
-    "lastName": "Dragonfly",
-    "fullName": "Kevin Dragonfly",
-    "role": "coach",
-    "image": "char-sprites/kevinsprite.png",
-    "number": 3,
-    "element": "wind",
-    "alias": ["Kidou Yuuto"],
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 15,
-    "firstName": "Eliot",
-    "lastName": "Griffin",
-    "fullName": "Eliot Griffin",
-    "role": "gar",
-    "image": "char-sprites/eliotsprite.png",
-    "number": 6,
-    "element": "dark",
-    "alias": ["Endou Mamoru"],
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 16,
-    "firstName": "Eliot",
-    "lastName": "Griffin",
-    "fullName": "Eliot Griffin",
-    "role": "coach",
-    "image": "char-sprites/eliotsprite.png",
-    "number": 6,
-    "element": "dark",
-    "alias": ["Endou Mamoru"],
-    "team": "Raimon",
-    "game": "IE1"
-  },
-    {
-    "id": 1,
-    "firstName": "Mark",
-    "lastName": "Evans",
-    "fullName": "Mark Evans",
-    "role": "gar",
-    "image": "char-sprites/mark_evans_sprite.png",
-    "number": 1,
-    "element": "mountain",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-
-  {
-    "id": 2,
-    "firstName": "Axel",
-    "lastName": "Blaze",
-    "fullName": "Axel Blaze",
-    "role": "atk",
-    "image": "char-sprites/axel_blaze_sprite.png",
-    "number": 10,
-    "element": "fire",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 3,
-    "firstName": "Jude",
-    "lastName": "Sharp",
-    "fullName": "Jude Sharp",
-    "role": "mil",
-    "image": "char-sprites/jude_sharp_sprite.png",
-    "number": 14,
-    "element": "forest",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 4,
-    "firstName": "Nathan",
-    "lastName": "Swift",
-    "fullName": "Nathan Swift",
-    "role": "def",
-    "image": "char-sprites/nathan_swift_sprite.png",
-    "number": 10,
-    "element": "wind",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 5,
-    "firstName": "Jack",
-    "lastName": "Wallside",
-    "fullName": "Jack Wallside",
-    "role": "def",
-    "image": "char-sprites/jack_wallside_sprite.png",
-    "number": 11,
-    "element": "mountain",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 6,
-    "firstName": "Kevin",
-    "lastName": "Dragonfly",
-    "fullName": "Kevin Dragonfly",
-    "role": "atk",
-    "image": "char-sprites/kevin_dragonfly_sprite.png",
-    "element": "forest",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  {
-    "id": 7,
-    "firstName": "Erik",
-    "lastName": "Eagle",
-    "fullName": "Erik Eagle",
-    "role": "mil",
-    "image": "char-sprites/erik_eagle_sprite.png",
-    "element": "forest",
-    "team": "Raimon",
-    "game": "IE1"
-  },
-  
-  {
-    "id": 8,
-    "firstName": "Shawn",
-    "lastName": "Froste",
-    "fullName": "Shawn Froste",
-    "role": "atk",
-    "image": "char-sprites/shawn_froste_sprite.png",
-    "element": "wind",
-    "team": "Raimon",
-    "game": "IE2"
-  },
-  {
-    "id": 9,
-    "firstName": "Darren",
-    "lastName": "Lachance",
-    "fullName": "Darren Lachance",
-    "role": "gar",
-    "image": "char-sprites/darren_lachance_sprite.png",
-    "element": "forest",
-    "team": "Raimon",
-    "game": "IE2"
-  },
-  {
-    "id": 10,
-    "firstName": "Hurley",
-    "lastName": "Kane",
-    "fullName": "Hurley Kane",
-    "role": "def",
-    "image": "char-sprites/hurley_kane_sprite.png",
-    "element": "wind",
-    "team": "Raimon",
-    "game": "IE2"
-  },
-  {
-    "id": 11,
+    "id": 43,
     "firstName": "Scott",
     "lastName": "Banyan",
     "fullName": "Scott Banyan",

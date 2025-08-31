@@ -138,10 +138,10 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
 }
 
 /* Couleurs par poste */
-.char[data-role="gar"] { background-color: #daa301; } /* jaune */
+.char[data-role="gar"] { background-color: #dddddd; } /* jaune */
 .char[data-role="atk"] { background-color: #9c2928; } /* rouge */
-.char[data-role="mil"] { background-color: #0b508d; } /* bleu */
-.char[data-role="def"] { background-color: #2e7d32; } /* vert */
+.char[data-role="mil"] { background-color: #da9800; } /* bleu */
+.char[data-role="def"] { background-color: #0052af; } /* vert */
 .char[data-role="coach"] { background-color: #3ba39b; } /* turquoise */
 .char[data-role="sup"] { background-color: #a33c75; } /* rose */
 
