@@ -78,6 +78,22 @@ function renderCharacters(list) {
     // flou si spoiler
     if (player.locked) img.classList.add('is-blurred');
 
+    // Badge élément (si défini dans ton JSON)
+    if (player.element) {
+      const badge = document.createElement('div');
+      badge.className = 'element-badge';
+
+      const elemImg = document.createElement('img');
+      elemImg.src = `logo/${player.element.toLowerCase()}.png`; 
+      elemImg.alt = player.element;
+
+      badge.appendChild(elemImg);
+      li.appendChild(badge);
+
+      // Sauvegarde pour filtrage
+      li.dataset.element = player.element.toLowerCase();
+    }
+
     // Nom
     const name = document.createElement('span');
     name.className = 'name';
@@ -170,12 +186,21 @@ function matchesActive(player, active){
     active.map(v => v.toUpperCase()).filter(v => /^(IE\d+|IEGO\d+|IE[AO]|IEVR)$/.test(v))
   );
 
+  const selectedElements = new Set(
+  active.map(v => v.toLowerCase())
+    .filter(v => ['feu','vent','bois','terre','eau'].includes(v))
+  );
+
+  
+
   const roleOK = selectedRoles.size ? selectedRoles.has(normalizeRole(player)) : true;
 
   const playerGames = normalizeGames(player);
   const gameOK = selectedGames.size ? playerGames.some(g => selectedGames.has(g)) : true;
 
-  return roleOK && gameOK;
+ /*ICI JE SUIS PAS SUR SI C BON*/ const elementOK = selectedElements.size ? selectedElements.some(g => selectedGames.has(g)) : true;
+
+  return roleOK && gameOK && elementOK;
 }
 
 function applyFilters(){

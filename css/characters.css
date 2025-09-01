@@ -94,6 +94,8 @@
   padding: 10px 30px;
 }
 
+
+
 .char-grid{
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
@@ -101,7 +103,31 @@
   gap: var(--gap-y) var(--gap-x);
 }
 
+.char{
+  position: relative;
+}
 
+/* Badge élément en haut à droite */
+.char .element-badge {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 25%;
+  background: rgb(43, 43, 43);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.char .element-badge img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  pointer-events: none;
+}
 
 .char-img{
   width: 160px;
@@ -118,6 +144,9 @@
   align-items: center;    /* centre horizontalement */
   text-decoration: none;  /* retire le soulignement */
 }
+
+
+
 
 .char .name {
   display: block;
