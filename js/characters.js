@@ -72,6 +72,7 @@ function renderCharacters(list) {
 
     // Image
     const img = document.createElement('img');
+    img.className = 'char-img';
     img.src = player.image;
     img.alt = player.fullName || `${player.firstName} ${player.lastName}` || 'Player';
     // flou si spoiler

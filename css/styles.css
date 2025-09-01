@@ -8,6 +8,13 @@
     user-select: none;
 }
 
+.site{
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+}
+
 @media screen and (min-width:1528px){
     .main, .footer{
       margin-left: 12.5vw;
@@ -217,42 +224,30 @@ footer a:visited {
 /* BREADCRUMBS */
 
 .navigation-path {
-  position: relative;
-  left: 25%;
-  top: 3%;
+  
   font-size: 100%;
-  user-select: none;
 }
 
 @media screen and (max-width:1528px) {
   .navigation-path{
-    font-size: 90%;
-    position: fixed;
-    left: 2%;
+    
   }
   
 }
 
 .navigation-path a {
-  color: #ffffff;
-  margin: 0 5px;
+  color: #fff;
 }
 
 .navigation-path span {
-  color: #ffffff;
+  color: #fff;
 }
 
 .navigation-path h1{
-  margin-top: 1vh;
   color: #fff;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .navigation-path .current {
-  color: #919cff;
+  color: #fff;
   cursor: default;
-}
-
-.navigation-path a:hover {
-  text-decoration: underline;
 }

@@ -1,205 +1,58 @@
+* {
+   padding: 0px;
+   margin: 0px;
+   box-sizing: border-box;
+}
+
+
 /* ===================== Variables (root) ===================== */
 :root{
-  --cols: 6;          /* colonnes par défaut (desktop) */
+  --cols: 7;          /* colonnes par défaut (desktop) */
   --gap-x: 50px;      /* écart horizontal entre cartes */
-  --gap-y: 80px;      /* écart vertical entre lignes (plus grand pour laisser passer les noms) */
+  --gap-y: 30px;      /* écart vertical entre lignes (plus grand pour laisser passer les noms) */
   --card: 140px;      /* diamètre des cartes */
 }
 
-/* ===================== Layout global (Grid + Background) ===================== */
-body {
-    /* Layout global en GRID pour coller la sidebar au footer */
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 280px 1fr;   /* largeur sidebar + contenu */
-    grid-template-rows: auto 1fr auto;  /* header, main, footer */
-    gap: 0;                              /* aucun espace entre éléments structuraux */
 
-    /* Fond */
-    background-image: url('../Ressources/vr-bg2.jpg');
-    background-size: cover;            /* taille d'origine */
-    background-position: top left;    /* coin haut gauche */
-    background-attachment: fixed;     /* ne bouge pas au scroll */
-}
 
-/* ===================== Voile sombre au-dessus du fond ===================== */
-/* Assombrit le fond sans toucher au background-image */
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45); /* intensité du voile sombre */
-  pointer-events: none;         /* ne bloque pas les clics */
-}
+/*---------AFFICHAGE DU CONTENU PRINCIPAL DE LA PAGE || DEBUT ------------*/
 
-/* ===================== Placement structurel (header/sidebar/nav/main/footer) ===================== */
-header.header { grid-column: 2; grid-row: 1; }
-.sidebar { grid-column: 1; grid-row: 1 / -1; align-self: stretch; margin: 0; }
-.navigation-path { grid-column: 1 / -1; grid-row: 1; max-width: 1200px;
-  margin: 10px 0 0;
-  width: 100%;
-  padding-left: var(--gap-x);
-  text-align: left;
-  position: relative;
-  z-index: 5;          /* au-dessus du voile sombre */
-  color: white;
-}
-.main { grid-column: 1 / -1; grid-row: 2; }
-footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !important; }
-
-/* ===================== Conteneur principal (colonne) ===================== */
-.main {
+.main{
+  background: url('../Ressources/vr-bg2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
-  flex-direction: column;   /* empile les sections (titre, filtre, grille) */
-  align-items: center;      /* centre horizontalement tout le contenu */
-  text-align: center;
-}
-
-/* ===================== Zone grille des personnages ===================== */
-/* --------------------- Conteneur de la grille --------------------- */
-.character-grid-container {
-  position: relative;
-  margin-bottom: 1vh;
-}
-
-/* --------------------- Grille (CSS Grid) --------------------- */
-.char-grid {
-  margin-top: 40px;                             /* espace au-dessus */
-  margin-bottom: 40px;                          /* espace en-dessous */ 
-  display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  column-gap: var(--gap-x);
-  row-gap: var(--gap-y);
-  max-width: 1200px;                            /* largeur max (réduit pour desktop) */
-  width: 100%;                                  /* occupe la largeur dispo puis bornée par max-width */
-  min-width: 0;
-  padding: 0;
-  justify-items: center;                        /* cartes centrées dans leur colonne */
-  justify-content: center;                      /* centre la distribution des colonnes */
-}
-
-/* ===================== Carte ronde ===================== */
-.char {
-  position: relative;
-  width: var(--card);
-  height: var(--card);
-  border-radius: 50%;
-  overflow: visible;  /* laisse le badge du nom sortir du cercle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-/* --------------------- Image du joueur --------------------- */
-.char img {
-  width: 97.5%;              /* image = exactement la taille de la carte */
-  height: 97.5%;
-  display: block;           /* supprime l'espace inline et colle aux bords */
-  object-fit: cover;
-  border-radius: 50%;
-  clip-path: circle(50% at 50% 50%); /* force le rognage en cercle, même si le parent est overflow: visible */
-  margin: auto;
+/*---------AFFICHAGE DU CONTENU PRINCIPAL DE LA PAGE || FIN ------------*/
+
+
+
+
+
+
+.toptext-container{
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+  padding-top: 3%; /*ESPACE TOUT LE TEXTE DU HAUT VERS LE BAS*/
+  margin-left: 8vw; /* MET TOUT LE TEXTE DU HAUT (BREADCRUMB + FILTRES) ESPACÉ AVEC LA SIDEBAR */
 }
 
-/* --------------------- Libellé du nom --------------------- */
-.char .name {
-  position: relative;
-  z-index: 2;         /* au-dessus du ::before overlay */
-  margin-top: 8px;
-  background: rgba(0,0,0,0.6);
+
+
+/*---------AFFICHAGE DES FILTRES || DEBUT ------------*/
+
+.filter-content{
+  margin-top: 20px;
+}
+
+
+.filter-role h3{
   color: #fff;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-}
-
-@media (max-width: 600px){
-  .char .name{ font-size: 12px; padding: 3px 8px; margin-top: 6px; }
-}
-@media (max-width: 420px){
-  .char .name{ font-size: 11px; padding: 3px 8px; margin-top: 6px; }
-}
-
-/* --------------------- Lien interne --------------------- */
-.char a{
-  text-decoration: none;
-}
-
-/* --------------------- Motif overlay --------------------- */
-.char::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: url('../Ressources/bg_soccer_pat.png') center/100px repeat;
-  mix-blend-mode: overlay; /* pour fond stylé */
-  z-index: 1;
-}
-
-/* ===================== Couleurs par poste ===================== */
-.char[data-role="gar"] { background-color: #dddddd; } /* jaune */
-.char[data-role="atk"] { background-color: #9c2928; } /* rouge */
-.char[data-role="mil"] { background-color: #da9800; } /* bleu */
-.char[data-role="def"] { background-color: #0052af; } /* vert */
-.char[data-role="coach"] { background-color: #3ba39b; } /* turquoise */
-.char[data-role="sup"] { background-color: #a33c75; } /* rose */
-
-/* --------------------- Effet au survol --------------------- */
-.char:hover {transform: translateY(-3px); transition: transform .2s;}
-
-/* ===================== Zone filtres ===================== */
-.filter-content {
-  margin: 20px 0;              /* aligne à gauche, même padding que la grille */
-  max-width: 1200px;
-  text-align: left;
-  width: 100%;
-  padding-left: 0;
-  font-size: 100%;
-  user-select: none;
-  z-index: 0;
-  color: white;
-}
-
-/* ===================== Titre de page ===================== */
-.main h1{
-  text-align: left;
-  margin: 20px 0 10px;
-  max-width: 1200px;
-  width: 100%;
-  padding-left: var(--gap-x);
-  position: relative;
-  z-index: 5;
-  color: white;
-}
-
-/* ===================== Anti-sticky (évite l'accrochage au scroll) ===================== */
-.main h1,
-.navigation-path {
-  position: static !important;
-  top: auto !important;
 }
 
 
-/* ===================== Titre du bloc filtres ===================== */
-.filter-content h3 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: white;
-  font-size: 17px;
-  text-align: left;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-@media (min-width: 1025px){
-  .filter-content { 
-    margin-left: -55vh; }
-}
-
-/* --------------------- Icônes des options --------------------- */
 .filter-options img{
   width: 50px;
   height: 50px;
@@ -227,32 +80,79 @@ footer { grid-column: 1 / -1; grid-row: 3; margin: 0; position: static !importan
   background-color: rgba(255, 255, 255, 0.671);
 }
 
-/* ===================== Points de rupture (responsive) ===================== */
+
+/*---------AFFICHAGE DES FILTRES || FIN------------*/
+
+
+/*---------AFFICHAGE DE LA GRILLE DES PERSOS || DEBUT------------*/
+
+
+.character-grid-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+
+.char-grid{
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  list-style: none;
+  gap: var(--gap-y) var(--gap-x);
+}
+
+
+
+.char-img{
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid rgb(29, 29, 29);   /* cadre rond blanc */
+  object-fit: cover;
+
+}
+
+.char a {
+  display: flex;
+  flex-direction: column; /* aligne image puis texte en dessous */
+  align-items: center;    /* centre horizontalement */
+  text-decoration: none;  /* retire le soulignement */
+}
+
+.char .name {
+  display: block;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 40%;
+  margin-top: 0px;        /* petit espace entre image et texte */
+  color: white;           /* ou une couleur adaptée */
+  font-size: 14px;
+  text-align: center;
+}
+
+.char[data-role="gar"] .char-img{ background-color: #ffffff; } /* jaune */
+.char[data-role="atk"] .char-img{ background-color: #9c2928; } /* rouge */
+.char[data-role="mil"] .char-img{ background-color: #da9800; } /* bleu */
+.char[data-role="def"] .char-img{ background-color: #0052af; } /* vert */
+.char[data-role="coach"] .char-img{ background-color: #3ba39b; } /* turquoise */
+.char[data-role="sup"] .char-img{ background-color: #a33c75; } /* rose */
+
+
 @media (max-width: 1280px){
   :root{ --cols: 6; --gap-x: 40px; --gap-y: 56px; }
 }
 @media (max-width: 1024px){
   :root{ --cols: 5; --gap-x: 32px; --gap-y: 48px; --card: 130px; }
 }
-@media (max-width: 800px){
+@media (max-width: 840px){
   :root{ --cols: 4; --gap-x: 24px; --gap-y: 40px; --card: 110px; }
   .filter-options img{ width: 42px; height: 42px; }
 }
-@media (max-width: 600px){
+@media (max-width: 700px){
   :root{ --cols: 3; --gap-x: 16px; --gap-y: 36px; --card: 95px; }
   .main h1{ font-size: clamp(20px, 5vw, 28px); }
 }
-@media (max-width: 420px){
+@media (max-width: 540px){
   :root{ --cols: 2; --gap-x: 12px; --gap-y: 32px; --card: 80px; }
   .filter-options img{ width: 36px; height: 36px; }
-}
-
-
-/* ===================== Alignement desktop (avec sidebar) ===================== */
-@media (min-width: 1025px){
-  .navigation-path,
-  .main h1,
-  .filter-content {
-    margin-left: 12vw; /* 280px = largeur sidebar */
-  }
 }
