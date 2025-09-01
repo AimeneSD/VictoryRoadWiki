@@ -152,7 +152,7 @@
   display: block;
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 40%;
+  border-radius: 5%;
   margin-top: 0px;        /* petit espace entre image et texte */
   color: white;           /* ou une couleur adaptée */
   font-size: 14px;

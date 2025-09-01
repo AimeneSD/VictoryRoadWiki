@@ -1,159 +1,50 @@
+/** =====================================================================
+ * VICTORY ROAD – CHARACTERS
+ * ---------------------------------------------------------------------
+ * Organisation « à la manière du CSS » avec sections claires :
+ *  1) CONSTANTES & ÉTAT GLOBAL
+ *  2) OUTILS DE NORMALISATION (roles, games)
+ *  3) RENDU DE LA GRILLE (DOM)
+ *  4) LOGIQUE DE FILTRAGE
+ *  5) INITIALISATION (DOMContentLoaded)
+ * ===================================================================== */
+
 console.log("characters.js loaded");
 
-const filterbtn = document.querySelectorAll('.filter-options label');
-
+/* =============================
+ * 1) CONSTANTES & ÉTAT GLOBAL
+ * ============================= */
 let ALL_PLAYERS = [];
 
-function normalizeRole(player){
-  const r = (player.role || player.position || player.poste || '').toString().trim().toLowerCase();
-  if (r.startsWith('att')) return 'atk';
-  if (r.startsWith('atk')) return 'atk';
-  if (r.startsWith('sup')) return 'sup';
-  if (r.startsWith('coach')) return 'coach';
-  if (r.startsWith('mil')) return 'mil';
-  if (r.startsWith('def')) return 'def';
-  if (r.startsWith('gar') || r.startsWith('gk') || r.startsWith('goal')) return 'gar';
-  return r; // fallback si déjà en 'atk/mil/def/gar'
-}
+// Jeux et rôles reconnus (pour la validation des filtres)
+const ROLE_TOKENS = new Set(["atk", "mil", "def", "gar", "sup", "coach"]);
+const GAME_TOKEN_REGEX = /^(IE\d+|IEGO\d+|IE[AO]|IEVR)$/; // IE1, IE2, IE3, IEGO1..3, IEA, IEO, IEVR
+// Éléments canoniques (EN). On acceptera les synonymes FR/EN via normalisation.
+const ELEMENT_TOKENS = new Set(["mountain", "fire", "forest", "wind", "water", "earth"]);
 
-function normalizeGame(player){
-  // `player.game` peut être une chaîne ("IE1") ou un tableau (["IE1","IE2"]) selon ton JSON
-  const raw = player.game;
-  if (!raw) return '';
+/* ==========================================
+ * 2) OUTILS DE NORMALISATION (roles, games, elements)
+ * ========================================== */
 
-  // Convertit en tableau de chaînes en minuscules
-  const list = Array.isArray(raw) ? raw : [raw];
-  const games = list
-    .map(g => g?.toString().trim().toLowerCase())
-    .filter(Boolean);
+/*--------- NORMALISATION ROLE ------------*/
 
-  // Mappe quelques variations vers des clés stables
-  const mapOne = (g) => {
-    if (g.startsWith('ie1') || g.includes('inazuma eleven 1')) return 'ie1';
-    if (g.startsWith('ie2') || g.includes('firestorm') || g.includes('blizzard')) return 'ie2';
-    if (g.startsWith('ie3')) return 'ie3';
-    if (g.startsWith('go1') || g.includes('chronostone')) return 'go1';
-    if (g.startsWith('go2')) return 'go2';
-    if (g.startsWith('go3')) return 'go3';
-    if (g.startsWith('vr')  || g.includes('victory road')) return 'vr';
-    return g; // par défaut, renvoie la valeur en minuscule
-  };
 
-  // Retourne la première clé (si plusieurs jeux, tu peux adapter à ton besoin)
-  return mapOne(games[0] || '');
+function normalizeRole(player) {
+  const r = (player.role || player.position || player.poste || "").toString().trim().toLowerCase();
+  if (r.startsWith("att") || r.startsWith("atk")) return "atk";
+  if (r.startsWith("sup")) return "sup";
+  if (r.startsWith("coach")) return "coach";
+  if (r.startsWith("mil")) return "mil";
+  if (r.startsWith("def")) return "def";
+  if (r.startsWith("gar") || r.startsWith("gk") || r.startsWith("goal")) return "gar";
+  return r; // fallback si déjà en 'atk/mil/def/gar' ou autre
 }
 
 
+/*--------- NORMALISATION GAME ------------*/
 
-// Charge le JSON puis construit la grille
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const res = await fetch("../characters/characters.json"); // adapte le chemin si besoin
-    const players = await res.json();
-    ALL_PLAYERS = players;
-    renderCharacters(ALL_PLAYERS);
-    setupFilters();
-  } catch (e) {
-    console.error('Impossible de charger characters.json', e);
-  }
-});
 
-function renderCharacters(list) {
-  const grid = document.getElementById('charGrid');
-  if (!grid) return;
-
-  // Fragment = performance (insertion en une fois)
-  const frag = document.createDocumentFragment();
-
-  list.forEach(player => {
-    const li = document.createElement('li');
-    li.className = 'char';
-    li.dataset.role = normalizeRole(player); // gar/atk/mil/def
-
-    // Image
-    const img = document.createElement('img');
-    img.className = 'char-img';
-    img.src = player.image;
-    img.alt = player.fullName || `${player.firstName} ${player.lastName}` || 'Player';
-    // flou si spoiler
-    if (player.locked) img.classList.add('is-blurred');
-
-    // Badge élément (si défini dans ton JSON)
-    if (player.element) {
-      const badge = document.createElement('div');
-      badge.className = 'element-badge';
-
-      const elemImg = document.createElement('img');
-      elemImg.src = `logo/${player.element.toLowerCase()}.png`; 
-      elemImg.alt = player.element;
-
-      badge.appendChild(elemImg);
-      li.appendChild(badge);
-
-      // Sauvegarde pour filtrage
-      li.dataset.element = player.element.toLowerCase();
-    }
-
-    // Nom
-    const name = document.createElement('span');
-    name.className = 'name';
-    name.textContent = player.fullName || `${player.firstName} ${player.lastName}`;
-
-    // Lien cliquable
-    const link = document.createElement('a');
-    const fileName = (player.fullName || `${player.firstName}_${player.lastName}`)
-      .toLowerCase()
-      .replace(/\s+/g, '_');
-    link.href = `pages/${fileName}.html`;
-
-    // Rendre toute la carte cliquable
-    li.style.cursor = 'pointer';
-    li.addEventListener('click', () => {
-      window.location.href = link.href;
-    });
-
-    // Empêche la propagation inutile (optionnel)
-    link.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-
-    // Optionnel accessibilité: aria-label
-    link.setAttribute('aria-label', name.textContent);
-
-    // Ajoute image et nom au lien
-    link.appendChild(img);
-    link.appendChild(name);
-
-    // Ajoute lien au li
-    li.appendChild(link);
-    frag.appendChild(li);
-  });
-
-  // Remplace le contenu
-  grid.replaceChildren(frag);
-
-  // (Optionnel) compteur
-  const countEl = document.getElementById('charCount');
-  if (countEl) countEl.textContent = `Total ${list.length}`;
-}
-
-/* ========================================================================
-   FILTRAGE DES PERSONNAGES
-   ------------------------------------------------------------------------
-   Ici se trouve toute la logique de filtrage.
-   Pour ajouter un nouveau filtre :
-     1) Ajouter des cases à cocher dans le HTML avec un attribut name="..."
-     2) Ajouter un normaliseur dans NORMALIZERS (ex: element, rareté, etc.)
-     3) (Optionnel) Mapper le name HTML vers une clé logique via FILTER_GROUP_ALIASES
-     4) C'est tout : matchesActive utilisera automatiquement ces groupes
-   ======================================================================== */
-
-function getActiveFilters(){
-  return Array.from(document.querySelectorAll('.filter-options input[type="checkbox"]:checked'))
-    .map(b => (b.value || ''));
-}
-
-function normalizeGames(player){
+function normalizeGames(player) {
   const raw = player.game;
   if (!raw) return [];
 
@@ -166,7 +57,7 @@ function normalizeGames(player){
       if (/^IE\d+$/.test(g)) return g;                 // IE1, IE2, IE3...
       if (/^IEGO\d+$/.test(g)) return g;               // IEGO1..IEGO3
       if (/^IE[AO]$/.test(g)) return g;                 // IEA, IEO
-      if (g === 'IEVR' || g === 'VR' || g.includes('VICTORY ROAD')) return 'IEVR';
+      if (g === "IEVR" || g === "VR" || g.includes("VICTORY ROAD")) return "IEVR";
       // Map GOx synonyms to IEGOx
       const go = g.match(/^GO(\d+)$/);
       if (go) return `IEGO${go[1]}`;
@@ -176,48 +67,154 @@ function normalizeGames(player){
   return [...new Set(games)];
 }
 
-function matchesActive(player, active){
-  const ROLE_TOKENS = new Set(['atk','mil','def','gar','sup','coach']);
+
+/*--------- NORMALISATION ELEMENT ------------*/
+
+function normalizeElementValue(v) {
+  const s = (v || "").toString().trim().toLowerCase();
+  // Français → canonique EN
+  if (["montagne", "mountain"].includes(s)) return "mountain";
+  if (["feu", "fire"].includes(s)) return "fire";
+  if (["bois", "forêt", "foret", "forest"].includes(s)) return "forest";
+  if (["vent", "wind"].includes(s)) return "wind";
+  return s;
+}
+
+function normalizeElement(player) {
+  return normalizeElementValue(player && player.element);
+}
+
+/* ==============================
+ * 3) RENDU DE LA GRILLE (DOM)
+ * ============================== */
+function renderCharacters(list) {
+  const grid = document.getElementById('charGrid');
+  if (!grid) return;
+
+  const frag = document.createDocumentFragment(); // insertion en une fois
+
+  list.forEach(player => {
+    const li = document.createElement('li');
+    li.className = 'char';
+    li.dataset.role = normalizeRole(player); // gar/atk/mil/def/sup/coach
+
+    // Badge élément (si défini dans ton JSON) – utilisé aussi pour le filtrage
+    if (player.element) {
+      const badge = document.createElement('div');
+      badge.className = 'element-badge';
+
+      const elemImg = document.createElement('img');
+      elemImg.src = `logo/${player.element.toLowerCase()}.png`;
+      elemImg.alt = player.element;
+
+      badge.appendChild(elemImg);
+      li.appendChild(badge);
+
+      li.dataset.element = normalizeElement(player);
+    }
+
+    // Image
+    const img = document.createElement('img');
+    img.className = 'char-img';
+    img.src = player.image;
+    img.alt = player.fullName || `${player.firstName} ${player.lastName}` || 'Player';
+    if (player.locked) img.classList.add('is-blurred'); // flou si spoiler
+
+    // Nom
+    const name = document.createElement('span');
+    name.className = 'name';
+    name.textContent = player.fullName || `${player.firstName} ${player.lastName}`;
+
+    // Lien cliquable (rend toute la carte cliquable)
+    const link = document.createElement('a');
+    const fileName = (player.fullName || `${player.firstName}_${player.lastName}`)
+      .toLowerCase()
+      .replace(/\s+/g, '_');
+    link.href = `pages/${fileName}.html`;
+    link.setAttribute('aria-label', name.textContent); // accessibilité
+
+    li.style.cursor = 'pointer';
+    li.addEventListener('click', () => { window.location.href = link.href; });
+    link.addEventListener('click', (e) => { e.stopPropagation(); });
+
+    // Compose la carte
+    link.appendChild(img);
+    link.appendChild(name);
+    li.appendChild(link);
+    frag.appendChild(li);
+  });
+
+  grid.replaceChildren(frag);
+
+  const countEl = document.getElementById('charCount');
+  if (countEl) countEl.textContent = `Total ${list.length}`;
+}
+
+/* =============================
+ * 4) LOGIQUE DE FILTRAGE
+ * ============================= */
+function getActiveFilters() {
+  return Array.from(document.querySelectorAll('.filter-options input[type="checkbox"]:checked'))
+    .map(b => (b.value || ''));
+}
+
+function matchesActive(player, active) {
+  // Rôles sélectionnés
   const selectedRoles = new Set(
     active.map(v => v.toLowerCase()).filter(v => ROLE_TOKENS.has(v))
   );
 
+  // Jeux sélectionnés
   const selectedGames = new Set(
-    active.map(v => v.toUpperCase()).filter(v => /^(IE\d+|IEGO\d+|IE[AO]|IEVR)$/.test(v))
+    active.map(v => v.toUpperCase()).filter(v => GAME_TOKEN_REGEX.test(v))
   );
 
+  // Éléments sélectionnés
   const selectedElements = new Set(
-  active.map(v => v.toLowerCase())
-    .filter(v => ['feu','vent','bois','terre','eau'].includes(v))
+    active.map(v => normalizeElementValue(v)).filter(v => ELEMENT_TOKENS.has(v))
   );
 
-  
-
+  // Vérifs de correspondance (ET strict entre groupes, OU à l’intérieur d’un groupe)
   const roleOK = selectedRoles.size ? selectedRoles.has(normalizeRole(player)) : true;
 
   const playerGames = normalizeGames(player);
   const gameOK = selectedGames.size ? playerGames.some(g => selectedGames.has(g)) : true;
 
- /*ICI JE SUIS PAS SUR SI C BON*/ const elementOK = selectedElements.size ? selectedElements.some(g => selectedGames.has(g)) : true;
+  // BUG FIX: on testait par erreur les éléments contre selectedGames.
+  const playerElement = normalizeElement(player);
+  const elementOK = selectedElements.size ? selectedElements.has(playerElement) : true;
 
   return roleOK && gameOK && elementOK;
 }
 
-function applyFilters(){
+function applyFilters() {
   const active = getActiveFilters();
-
-  if (active.length === 0){
+  if (active.length === 0) {
     renderCharacters(ALL_PLAYERS);
     return;
   }
-
   const filtered = ALL_PLAYERS.filter(p => matchesActive(p, active));
   renderCharacters(filtered);
 }
 
-function setupFilters(){
+function setupFilters() {
   const boxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
   boxes.forEach(b => {
     b.addEventListener('change', applyFilters);
   });
 }
+
+/* =============================
+ * 5) INITIALISATION
+ * ============================= */
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch("../characters/characters.json"); // adapte le chemin si besoin
+    const players = await res.json();
+    ALL_PLAYERS = players;
+    renderCharacters(ALL_PLAYERS);
+    setupFilters();
+  } catch (e) {
+    console.error('Impossible de charger characters.json', e);
+  }
+});
