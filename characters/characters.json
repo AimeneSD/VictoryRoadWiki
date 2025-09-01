@@ -118,7 +118,7 @@
     "fullName": "Scott Banyan",
     "role": "def",
     "image": "char-sprites/scott_banyan_sprite.png",
-    "element": "ice",
+    "element": "forest",
     "team": "Raimon",
     "game": "IE2"
   },
@@ -533,5 +533,38 @@
     "element": "wind",
     "team": "POmega",
     "game": "IEGO2"
+  },
+  {
+    "id": 49,
+    "firstName": "Seyman",
+    "lastName": "Hillman",
+    "fullName": "Seymour Hillman",
+    "role": "coach",
+    "image": "char-sprites/seymour_hillman_sprite.png",
+    "element": "",
+    "team": "",
+    "game": ""
+  },
+  {
+    "id": 50,
+    "firstName": "Aquilina",
+    "lastName": "Schiller",
+    "fullName": "Aquilina Schiller",
+    "role": "coach",
+    "image": "char-sprites/aquilina_schiller_sprite.png",
+    "element": "",
+    "team": "",
+    "game": ""
+  },
+  {
+    "id": 51,
+    "firstName": "Percival",
+    "lastName": "Travis",
+    "fullName": "Percival Travis",
+    "role": "coach",
+    "image": "char-sprites/percival_travis_sprite.png",
+    "element": "",
+    "team": "",
+    "game": ""
   }
 ]
