@@ -7,11 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const player = {
     fullName: "Mark Evans",
     stats: {
-      attack: 20,
-      defense: 40,
-      technique: 60,
-      speed: 30,
-      stamina: 70
+      frappe: 20,
+      controle: 45,
+      pression: 75,
+      physique: 40,
+      agilite: 65,
+      intelligence: 85,
+      technique: 80
     }
   };
 
@@ -23,13 +25,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ctx = canvas.getContext("2d");
 
+  const labels = [
+    "Frappe",
+    "Contrôle",
+    "Pression",
+    "Physique",
+    "Agilité",
+    "Intelligence",
+    "Technique"
+  ];
+
+  // IMPORTANT: aligne les valeurs avec les labels, ne pas utiliser Object.values()
+  const data = [
+    player.stats.frappe,
+    player.stats.controle,
+    player.stats.pression,
+    player.stats.physique,
+    player.stats.agilite,
+    player.stats.intelligence,
+    player.stats.technique
+  ];
+
   new Chart(ctx, {
     type: "radar",
     data: {
-      labels: ["Attack", "Defense", "Technique", "Speed", "Stamina"],
+      labels: labels,
       datasets: [{
         label: player.fullName,
-        data: Object.values(player.stats),
+        data: data,
         fill: true,
         backgroundColor: "rgba(54, 162, 235, 0.2)",
         borderColor: "rgb(54, 162, 235)",
@@ -38,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }]
     },
     options: {
-      responsive: true,
+      responsive: false,
       scales: {
         r: {
           beginAtZero: true,
@@ -48,6 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           pointLabels: {
             color: "white"   // garde les labels Attack/Defense visibles en blanc
+          },
+          grid: {
+            color: "rgba(255, 255, 255, 0.5)" // lignes du radar en blanc semi-transparent
           }
         }
       }
