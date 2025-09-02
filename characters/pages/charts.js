@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         backgroundColor: "rgba(54, 162, 235, 0.2)",
         borderColor: "rgb(54, 162, 235)",
         pointBackgroundColor: "rgb(54, 162, 235)"
+        
       }]
     },
     options: {
@@ -41,7 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
       scales: {
         r: {
           beginAtZero: true,
-          max: 100
+          max: 100,
+          ticks: {
+            display: false   // enlève les dizaines
+          },
+          pointLabels: {
+            color: "white"   // garde les labels Attack/Defense visibles en blanc
+          }
         }
       }
     }
