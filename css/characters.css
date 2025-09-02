@@ -18,7 +18,7 @@
 /*---------AFFICHAGE DU CONTENU PRINCIPAL DE LA PAGE || DEBUT ------------*/
 
 .main{
-  background: url('../ressources/vr-bg2.jpg');
+  background: url('../ressources/vr-bg2.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
