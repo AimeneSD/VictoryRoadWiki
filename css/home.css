@@ -2,7 +2,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: url('../Ressources/vr-bg1.png')no-repeat;
+    background: url('../ressources/vr-bg1.png')no-repeat;
     background-size: cover;
     background-position: center;
 }
