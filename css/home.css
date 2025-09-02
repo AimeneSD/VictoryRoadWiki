@@ -37,8 +37,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     word-spacing: 2px;
-    -webkit-text-stroke: 0.2px #363636;
-    text-shadow: 2px 2px 4px #00000088;
+    -webkit-text-stroke: 0.5px #0c0c0c;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
     user-select: none;
 }
 
