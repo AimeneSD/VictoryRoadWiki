@@ -8,7 +8,14 @@
     "image": "char-sprites/mark_evans_sprite.png",
     "element": "mountain",
     "team": "Raimon",
-    "game": "IE1"
+    "game": "IE1",
+    "stats": {
+        "attack": 20,
+        "defense": 40,
+        "technique": 60,
+        "speed": 30,
+        "stamina": 70
+      }
   },
 
   {
