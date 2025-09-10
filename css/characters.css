@@ -107,6 +107,11 @@
   position: relative;
 }
 
+.char:hover{
+  transform: translateY(-4px);
+  transition: transform 0.2s;
+}
+
 /* Badge élément en haut à droite */
 .char .element-badge {
   position: absolute;
