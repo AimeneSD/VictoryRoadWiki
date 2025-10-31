@@ -25,7 +25,7 @@
             <div class="cards-container">
                 <!-- Characters -->
                 <div class="card card--with-image">
-                    <a href="characters/index.html" class="card-link">
+                    <a href="php/characters/index.php" class="card-link">
                         <div class="card__content">
                             <h2>Characters</h2>
                             <p>Meet all characters, their background and stats.</p>
@@ -37,7 +37,7 @@
 
                 <!-- Guides -->
                 <div class="card card--with-image">
-                    <a href="guides/index.html" class="card-link">
+                    <a href="/php/guides/index.html" class="card-link">
                         <div class="card__content">
                             <h2>Guides</h2>
                             <p>Informations that the game doesn't tell you.</p>
@@ -49,7 +49,7 @@
 
                 <!-- Techniques -->
                 <div class="card card--with-image">
-                    <a href="techniques/index.html" class="card-link">
+                    <a href="/php/techniques/index.html" class="card-link">
                         <div class="card__content">
                             <h2>Techniques</h2>
                             <p>List of all Hissatsu Techniques & Kenshin.</p>
@@ -61,7 +61,7 @@
 
                 <!-- Items -->
                 <div class="card card--with-image">
-                    <a href="items/index.html" class="card-link">
+                    <a href="/php/items/index.html" class="card-link">
                         <div class="card__content">
                             <h2>Items</h2>
                             <p>Complete list of items, equipements & how to obtain them.</p>
@@ -73,7 +73,7 @@
 
                 <!-- Home -->
                 <div class="card card--with-image">
-                    <a href="tiers/index.html" class="card-link">  
+                    <a href="/php/tiers/index.html" class="card-link">  
                         <div class="card__content">
                             <h2>Tiers</h2>
                             <p>Discover the best characters and strategies.</p>
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="card card--with-image">
-                    <a href="teams/index.html" class="card-link">
+                    <a href="/php/teams/index.html" class="card-link">
                         <div class="card__content">
                             <h2>Teams</h2>
                             <p>Explore different team setups and formations.</p>
