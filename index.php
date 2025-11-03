@@ -25,7 +25,7 @@
             <div class="cards-container">
                 <!-- Characters -->
                 <div class="card card--with-image">
-                    <a href="php/characters/index.php" class="card-link">
+                    <a href="/php/characters/index.php" class="card-link">
                         <div class="card__content">
                             <h2>Characters</h2>
                             <p>Meet all characters, their background and stats.</p>
@@ -96,14 +96,7 @@
             </div>
         </main>
 
-
-        <footer class="footer">
-            <p>Victory Road Wiki is an unofficial fan-created information site. All trademarks, copyrights, and related content belong to LEVEL5 Inc.<br> This site is not affiliated with or endorsed by LEVEL5 Inc.</p>
-            <br>
-            <p>contact : majindevworks@gmail.com</p>
-            <br>
-            <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="ressources/discord_logo.png">Discord</a>
-        </footer>
+        <?php require_once(__DIR__ . '/inclusions/footer.php');?>
 
     </body>
 </html>

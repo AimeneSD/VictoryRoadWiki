@@ -1,9 +1,9 @@
 <?php
 // Config de connexion Supabase / PostgreSQL
-$host = 'db.ygwefkgcmeqldzplecbo.supabase.co';
+$host = 'aws-1-eu-west-3.pooler.supabase.com';
 $port = '5432';
 $dbname = 'postgres';
-$user = 'postgres';
+$user = 'postgres.ygwefkgcmeqldzplecbo';
 $password = '2KwCNpzGp8jCJqGd';
 
 try {
