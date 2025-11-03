@@ -1,49 +1,187 @@
-<?php
-require_once '../config.php';
-
-// Récupère tous les personnages depuis la table
-$sql = "SELECT * FROM characters ORDER BY last_name ASC";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$characters = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Characters - Victory Road Wiki</title>
-    <link rel="stylesheet" href="/css/characters.css">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <div class="site">
-        <?php include '../header.php'; ?> <!-- si tu veux un header global -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Victory Road Wiki</title>
+        <link rel="stylesheet" href="/css/characters.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <script src="/js/script.js" defer></script>
+        <script src="/js/characters.js" defer></script>
+        <link rel="icon" type="image/png" href="/ressources/sidebar_logo.png">
+    </head>
+    <body>
+        <div class="site">
+            <header class="header">
+                <div class="hamburger-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                </div>
+                <div class="sidebar active">
+                    <div class="menu">
+                        <a class="sidebar-logo" href="/index.php"><img class="logo" src="/ressources/sidebar_logo.png"  oncontextmenu="return false;" alt="Victory Road Wiki Logo"></a>
+                        <br>
+                        <div class="item"><a href="/php/characters/index.html"><img class="redirect-image" src="/ressources/charactericon.png">Characters</a></div>
+                        <div class="item"><a href="/php/guides/index.html"><img class="redirect-image" src="/ressources/guide_icon.png">Guides</a></div>
+                        <div class="item"><a href="/php/techniques/index.html"><img class="redirect-image" src="/ressources/ballfoot.png">Techniques</a></div>
+                        <div class="item"><a href="/php/items/index.html"><img class="redirect-image" src="/ressources/bagicon.png">Items</a></div>
+                        <div class="item"><a href="/php/calculator/index.html"><img class="redirect-image" src="/ressources/calculator.png">Calculator</a></div>
+                        <div class="item"><a href="/php/tiers/index.html"><img class="redirect-image" src="/ressources/trophy_icon.png">Tiers</a></div>
+                        <div class="item"><a href="/php/teams/index.html"><img class="redirect-image" src="/ressources/teamicon.png">Teams</a></div>
+                    </div>
+                </div>
+            </header>
 
-        <main class="main">
-            <div class="toptext-container">
-                <nav class="breadcrumb">
-                    <a href="/index.php">Home</a> / <span>Characters</span>
-                </nav>
-                <h1>Characters</h1>
-            </div>
+            
 
-            <div class="character-grid-container">
-                <ul class="char-grid">
-                    <?php foreach ($characters as $c): ?>
-                        <li class="char" data-role="<?= htmlspecialchars($c['position']) ?>" data-element="<?= htmlspecialchars($c['element']) ?>">
-                            <a href="character.php?id=<?= $c['id'] ?>">
-                                <img src="<?= htmlspecialchars($c['portrait_url']) ?>" alt="<?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name']) ?>" class="char-img">
-                                <span class="name"><?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name']) ?></span>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </main>
+            <main class="main">
 
-        <?php include '../footer.php'; ?>
-    </div>
-</body>
+                <div class="toptext-container">
+                    <div class="navigation-path">
+                        <nav class="breadcrumb">
+                            <a href="/index.html">Home</a> 
+                            <span class="current">/</span>
+                            <span class="current">Characters</span>
+                        </nav>
+                        <h1>Characters</h1>
+                    </div>
+
+                    <!-- Filtre Poste -->
+                
+                    <div class="filter-content">
+                        <div class="filter-role">
+                            <h3>Role</h3>
+                            <div class="filter-options">
+                                <label>
+                                    <input type="checkbox" name="poste" value="atk">
+                                    <img class="filter-icon" src="logo/att.png" alt="Attacker Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="poste" value="mil">
+                                    <img class="filter-icon" src="logo/mil.png" alt="Milieu Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="poste" value="def">
+                                    <img class="filter-icon" src="logo/def.png" alt="Défenceur Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="poste" value="gar">
+                                    <img class="filter-icon" src="logo/gar.png" alt="Goal Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="poste" value="sup">
+                                    <img class="filter-icon" src="logo/sup.png" alt="Support Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="poste" value="coach">
+                                    <img class="filter-icon" src="logo/coach.png" alt="Coach Icon">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Filtre JEU -->
+
+                        <div class="filter-role">
+                            <h3>Game</h3>
+                            <div class="filter-options">
+                                <label>
+                                    <input type="checkbox" name="game" value="IE1">
+                                    <img class="filter-icon" src="logo/IE1.png" alt="Attacker Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IE2">
+                                    <img class="filter-icon" src="logo/IE2.png" alt="Milieu Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IE3">
+                                    <img class="filter-icon" src="logo/IE3.png" alt="Défenceur Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IEGO1">
+                                    <img class="filter-icon" src="logo/IEGO1.png" alt="Goal Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IEGO2">
+                                    <img class="filter-icon" src="logo/IEGO2.png" alt="Support Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IEGO3">
+                                    <img class="filter-icon" src="logo/IEGO3.png" alt="Coach Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IEA">
+                                    <img class="filter-icon" src="logo/IEA.png" alt="Coach Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IEO">
+                                    <img class="filter-icon" src="logo/IEO.png" alt="Coach Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="game" value="IEVR">
+                                    <img class="filter-icon" src="logo/IEVR.png" alt="Coach Icon">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Filtre element -->
+
+                        <div class="filter-role">
+                            <h3>Element</h3>
+                            <div class="filter-options">
+                                <label>
+                                    <input type="checkbox" name="element" value="mountain">
+                                    <img class="filter-icon" src="logo/mountain.png" alt="Mountain Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="element" value="fire">
+                                    <img class="filter-icon" src="logo/fire.png" alt="Fire Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="element" value="forest">
+                                    <img class="filter-icon" src="logo/forest.png" alt="Forest Icon">
+                                    <span></span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="element" value="wind">
+                                    <img class="filter-icon" src="logo/wind.png" alt="Wind Icon">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Character Grid -->
+                
+                <div class="character-grid-container">
+                    <ul id="charGrid" class="char-grid"></ul>
+                </div>
+
+            </main>
+
+
+            <footer class="footer">
+                <p>Victory Road Wiki is an unofficial fan-created information site. All trademarks, copyrights, and related content belong to LEVEL5 Inc.<br> This site is not affiliated with or endorsed by LEVEL5 Inc.</p>
+                <p>contact : majindevworks@gmail.com</p>
+                <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="../ressources/discord_logo.png">Discord</a>
+            </footer>
+        </div>
+    </body>
 </html>

@@ -14,9 +14,7 @@
     </head>
     <body>
         
-        
         <?php require_once(__DIR__ . '/inclusions/header.php');?>
-
 
         <main class="main">
             <img class="main-logo" src="ressources/main-logo.png" oncontextmenu="return false;" alt="Victory Road Wiki Logo">
