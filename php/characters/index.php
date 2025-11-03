@@ -1,49 +1,130 @@
-<?php
-require_once '../config.php';
+<?php 
+require_once(__DIR__ . '/../config.php');
 
-// Récupère tous les personnages depuis la table
-$sql = "SELECT * FROM characters ORDER BY last_name ASC";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$characters = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+    // Requête pour récupérer les joueurs
+    $sql = "SELECT id_joueur, nom, prenom, poste, jeu, element, equipe, photo 
+            FROM public.joueurs 
+            ORDER BY id_joueur ASC";
+    $stmt = $pdo->query($sql);
+    $joueurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("❌ Erreur de récupération des joueurs : " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Characters - Victory Road Wiki</title>
-    <link rel="stylesheet" href="/css/characters.css">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <div class="site">
-        <?php include '../header.php'; ?> <!-- si tu veux un header global -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Victory Road Wiki</title>
+        <link rel="stylesheet" href="/css/characters.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <script src="/js/script.js" defer></script>
+        <script src="/js/characters.js" defer></script>
+    </head>
 
-        <main class="main">
-            <div class="toptext-container">
-                <nav class="breadcrumb">
-                    <a href="/index.php">Home</a> / <span>Characters</span>
-                </nav>
-                <h1>Characters</h1>
-            </div>
+    <body>
+        <div class="site">
 
-            <div class="character-grid-container">
-                <ul class="char-grid">
-                    <?php foreach ($characters as $c): ?>
-                        <li class="char" data-role="<?= htmlspecialchars($c['position']) ?>" data-element="<?= htmlspecialchars($c['element']) ?>">
-                            <a href="character.php?id=<?= $c['id'] ?>">
-                                <img src="<?= htmlspecialchars($c['portrait_url']) ?>" alt="<?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name']) ?>" class="char-img">
-                                <span class="name"><?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name']) ?></span>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </main>
+            <?php require_once(__DIR__ . '/../../inclusions/header.php');?>
 
-        <?php include '../footer.php'; ?>
-    </div>
-</body>
+            <main class="main">
+
+                <div class="toptext-container">
+                    <div class="navigation-path">
+                        <nav class="breadcrumb">
+                            <a href="/index.html">Home</a> 
+                            <span class="current">/</span>
+                            <span class="current">Characters</span>
+                        </nav>
+                        <h1>Characters</h1>
+                    </div>
+                </div>
+
+
+
+
+                <!-- LISTE DES JOUEURS !-->
+
+
+                <h1>Liste des joueurs</h1>
+
+                    <div class="players-grid">
+                        <?php foreach ($joueurs as $joueur): ?>
+                            <div class="player-card">
+                                <?php if (!empty($joueur['photo'])): ?>
+                                    <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>">
+                                <?php else: ?>
+                                    <img src="/images/joueurs/default.png" alt="Aucune photo">
+                                <?php endif; ?>
+
+                                <h2><?= htmlspecialchars($joueur['prenom'] . ' ' . $joueur['nom']) ?></h2>
+                                <?php if (!empty($joueur['element'])): ?>
+                                    <p><strong>Élément :</strong> <?= htmlspecialchars($joueur['element']) ?></p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+            </main>
+
+
+            <footer class="footer">
+                <p>Victory Road Wiki is an unofficial fan-created information site. All trademarks, copyrights, and related content belong to LEVEL5 Inc.<br> This site is not affiliated with or endorsed by LEVEL5 Inc.</p>
+                <p>contact : majindevworks@gmail.com</p>
+                <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="../ressources/discord_logo.png">Discord</a>
+            </footer>
+
+            
+<!-- Le style est généré par l'ia parce que je savais pas comment on ajoute du style au php par contre le reste c'est moi !-->
+<style>
+body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+}
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonnes */
+    gap: 20px;
+    padding: 30px;
+    justify-items: center;
+}
+.player-card {
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 15px;
+    color: #fff;
+    width: 160px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+.player-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+}
+.player-card h2 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+.player-card p {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+</style>
+
+
+        </div>
+    </body>
 </html>
