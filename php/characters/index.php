@@ -42,31 +42,29 @@ try {
                         <h1>Characters</h1>
                     </div>
                 </div>
-
-
-
+                
 
                 <!-- LISTE DES JOUEURS !-->
-
-
-                <h1>Liste des joueurs</h1>
-
+                    
                     <div class="players-grid">
                         <?php foreach ($joueurs as $joueur): ?>
-                            <div class="player-card">
-                                <?php if (!empty($joueur['photo'])): ?>
-                                    <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>">
-                                <?php else: ?>
-                                    <img src="/images/joueurs/default.png" alt="Aucune photo">
-                                <?php endif; ?>
+                            <a href="/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
+                                <div class="player-card">
+                                    <?php if (!empty($joueur['photo'])): ?>
+                                        <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>">
+                                    <?php else: ?>
+                                        <img src="/images/joueurs/default.png" alt="Aucune photo">
+                                    <?php endif; ?>
 
-                                <h2><?= htmlspecialchars($joueur['prenom'] . ' ' . $joueur['nom']) ?></h2>
-                                <?php if (!empty($joueur['element'])): ?>
-                                    <p><strong>Élément :</strong> <?= htmlspecialchars($joueur['element']) ?></p>
-                                <?php endif; ?>
-                            </div>
+                                    <h2><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h2>
+                                    <?php if (!empty($joueur['element'])): ?>
+                                        <p><strong>Élément :</strong> <?= htmlspecialchars($joueur['element']) ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
+
 
             </main>
 
