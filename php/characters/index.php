@@ -1,3 +1,18 @@
+<?php 
+require_once(__DIR__ . '/../config.php');
+
+try {
+    // Requête pour récupérer les joueurs
+    $sql = "SELECT id_joueur, nom, prenom, poste, jeu, element, equipe, photo 
+            FROM public.joueurs 
+            ORDER BY id_joueur ASC";
+    $stmt = $pdo->query($sql);
+    $joueurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("❌ Erreur de récupération des joueurs : " . $e->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,32 +23,12 @@
         <link rel="stylesheet" href="/css/styles.css">
         <script src="/js/script.js" defer></script>
         <script src="/js/characters.js" defer></script>
-        <link rel="icon" type="image/png" href="/ressources/sidebar_logo.png">
     </head>
+
     <body>
         <div class="site">
-            <header class="header">
-                <div class="hamburger-menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                </div>
-                <div class="sidebar active">
-                    <div class="menu">
-                        <a class="sidebar-logo" href="/index.php"><img class="logo" src="/ressources/sidebar_logo.png"  oncontextmenu="return false;" alt="Victory Road Wiki Logo"></a>
-                        <br>
-                        <div class="item"><a href="/php/characters/index.html"><img class="redirect-image" src="/ressources/charactericon.png">Characters</a></div>
-                        <div class="item"><a href="/php/guides/index.html"><img class="redirect-image" src="/ressources/guide_icon.png">Guides</a></div>
-                        <div class="item"><a href="/php/techniques/index.html"><img class="redirect-image" src="/ressources/ballfoot.png">Techniques</a></div>
-                        <div class="item"><a href="/php/items/index.html"><img class="redirect-image" src="/ressources/bagicon.png">Items</a></div>
-                        <div class="item"><a href="/php/calculator/index.html"><img class="redirect-image" src="/ressources/calculator.png">Calculator</a></div>
-                        <div class="item"><a href="/php/tiers/index.html"><img class="redirect-image" src="/ressources/trophy_icon.png">Tiers</a></div>
-                        <div class="item"><a href="/php/teams/index.html"><img class="redirect-image" src="/ressources/teamicon.png">Teams</a></div>
-                    </div>
-                </div>
-            </header>
 
-            
+            <?php require_once(__DIR__ . '/../../inclusions/header.php');?>
 
             <main class="main">
 
@@ -46,142 +41,84 @@
                         </nav>
                         <h1>Characters</h1>
                     </div>
-
-                    <!-- Filtre Poste -->
+                </div>
                 
-                    <div class="filter-content">
-                        <div class="filter-role">
-                            <h3>Role</h3>
-                            <div class="filter-options">
-                                <label>
-                                    <input type="checkbox" name="poste" value="atk">
-                                    <img class="filter-icon" src="logo/att.png" alt="Attacker Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="poste" value="mil">
-                                    <img class="filter-icon" src="logo/mil.png" alt="Milieu Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="poste" value="def">
-                                    <img class="filter-icon" src="logo/def.png" alt="Défenceur Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="poste" value="gar">
-                                    <img class="filter-icon" src="logo/gar.png" alt="Goal Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="poste" value="sup">
-                                    <img class="filter-icon" src="logo/sup.png" alt="Support Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="poste" value="coach">
-                                    <img class="filter-icon" src="logo/coach.png" alt="Coach Icon">
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
 
-                        <!-- Filtre JEU -->
+                <!-- LISTE DES JOUEURS !-->
+                    
+                    <div class="players-grid">
+                        <?php foreach ($joueurs as $joueur): ?>
+                            <a href="/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
+                                <div class="player-card">
+                                    <?php if (!empty($joueur['photo'])): ?>
+                                        <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>">
+                                    <?php else: ?>
+                                        <img src="/images/joueurs/default.png" alt="Aucune photo">
+                                    <?php endif; ?>
 
-                        <div class="filter-role">
-                            <h3>Game</h3>
-                            <div class="filter-options">
-                                <label>
-                                    <input type="checkbox" name="game" value="IE1">
-                                    <img class="filter-icon" src="logo/IE1.png" alt="Attacker Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IE2">
-                                    <img class="filter-icon" src="logo/IE2.png" alt="Milieu Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IE3">
-                                    <img class="filter-icon" src="logo/IE3.png" alt="Défenceur Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IEGO1">
-                                    <img class="filter-icon" src="logo/IEGO1.png" alt="Goal Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IEGO2">
-                                    <img class="filter-icon" src="logo/IEGO2.png" alt="Support Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IEGO3">
-                                    <img class="filter-icon" src="logo/IEGO3.png" alt="Coach Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IEA">
-                                    <img class="filter-icon" src="logo/IEA.png" alt="Coach Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IEO">
-                                    <img class="filter-icon" src="logo/IEO.png" alt="Coach Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="game" value="IEVR">
-                                    <img class="filter-icon" src="logo/IEVR.png" alt="Coach Icon">
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Filtre element -->
-
-                        <div class="filter-role">
-                            <h3>Element</h3>
-                            <div class="filter-options">
-                                <label>
-                                    <input type="checkbox" name="element" value="mountain">
-                                    <img class="filter-icon" src="logo/mountain.png" alt="Mountain Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="element" value="fire">
-                                    <img class="filter-icon" src="logo/fire.png" alt="Fire Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="element" value="forest">
-                                    <img class="filter-icon" src="logo/forest.png" alt="Forest Icon">
-                                    <span></span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="element" value="wind">
-                                    <img class="filter-icon" src="logo/wind.png" alt="Wind Icon">
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
+                                    <h2><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h2>
+                                    <?php if (!empty($joueur['element'])): ?>
+                                        <p><strong>Élément :</strong> <?= htmlspecialchars($joueur['element']) ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
-                </div>
-                <!-- Character Grid -->
-                
-                <div class="character-grid-container">
-                    <ul id="charGrid" class="char-grid"></ul>
-                </div>
+
 
             </main>
 
 
-            <footer class="footer">
-                <p>Victory Road Wiki is an unofficial fan-created information site. All trademarks, copyrights, and related content belong to LEVEL5 Inc.<br> This site is not affiliated with or endorsed by LEVEL5 Inc.</p>
-                <p>contact : majindevworks@gmail.com</p>
-                <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="../ressources/discord_logo.png">Discord</a>
-            </footer>
+            <?php require_once(__DIR__ . '/../../inclusions/footer.php');?>
+
+            
+<!-- Le style est généré par l'ia parce que je savais pas comment on ajoute du style au php par contre le reste c'est moi !-->
+<style>
+body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+}
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonnes */
+    gap: 20px;
+    padding: 30px;
+    justify-items: center;
+}
+.player-card {
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 15px;
+    color: #fff;
+    width: 160px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+.player-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+}
+.player-card h2 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+.player-card p {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+</style>
+
+
         </div>
     </body>
 </html>
