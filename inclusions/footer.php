@@ -3,5 +3,5 @@
     <br>
     <p>contact : majindevworks@gmail.com</p>
     <br>
-    <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="ressources/discord_logo.png">Discord</a>
+    <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="/ressources/discord_logo.png">Discord</a>
 </footer>
