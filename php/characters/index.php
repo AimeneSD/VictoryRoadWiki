@@ -71,6 +71,7 @@ try {
 
             <?php require_once(__DIR__ . '/../../inclusions/footer.php');?>
 
+
             
 <!-- Le style est généré par l'ia parce que je savais pas comment on ajoute du style au php par contre le reste c'est moi !-->
 <style>
