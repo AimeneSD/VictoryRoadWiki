@@ -36,70 +36,12 @@
   margin-left: 8vw; /* MET TOUT LE TEXTE DU HAUT (BREADCRUMB + FILTRES) ESPACÉ AVEC LA SIDEBAR */
 }
 
-/*<!-- Le style est généré par l'ia parce que je savais pas comment on ajoute du style au php par contre le reste c'est moi !-->*/
 
-body {
-    background-color: #121212;
-    font-family: Arial, sans-serif;
-}
-.players-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 colonnes */
-    gap: 20px;
-    padding: 30px;
-    justify-items: center;
-}
-.player-card {
-    border: 2px solid #333;
-    border-radius: 15px;
-    color: #fff;
-    width: 160px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.player-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-}
-.player-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #555;
-}
-.player-card h2 {
-    font-size: 1.1em;
-    margin-bottom: 6px;
-}
-.player-card p {
-    margin: 4px 0;
-    font-size: 0.9em;
-}
 
-/* Couleurs selon le poste */
-.player-card.atk {
-    background-color: rgba(255, 0, 0, 0.562);
-    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
-}
 
-.player-card.def {
-    background-color: #3498db8e; /* bleu pour Défenseur */
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-}
 
-.player-card.mil {
-    background-color: #f1c40fb5; /* jaune pour Milieu */
-    box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
-}
 
-.player-card.gar {
-    background-color: #ffffffae; /* vert pour Gardien */
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
-}
+
 
 
 @media (max-width: 1280px){
