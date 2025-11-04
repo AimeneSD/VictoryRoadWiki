@@ -30,146 +30,76 @@
 
 
 
-
-
-
 .toptext-container{
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
   padding-top: 3%; /*ESPACE TOUT LE TEXTE DU HAUT VERS LE BAS*/
   margin-left: 8vw; /* MET TOUT LE TEXTE DU HAUT (BREADCRUMB + FILTRES) ESPACÉ AVEC LA SIDEBAR */
 }
 
+/*<!-- Le style est généré par l'ia parce que je savais pas comment on ajoute du style au php par contre le reste c'est moi !-->*/
 
-
-/*---------AFFICHAGE DES FILTRES || DEBUT ------------*/
-
-.filter-content{
-  margin-top: 20px;
+body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+}
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonnes */
+    gap: 20px;
+    padding: 30px;
+    justify-items: center;
+}
+.player-card {
+    border: 2px solid #333;
+    border-radius: 15px;
+    color: #fff;
+    width: 160px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+.player-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+}
+.player-card h2 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+.player-card p {
+    margin: 4px 0;
+    font-size: 0.9em;
 }
 
-
-.filter-role h3{
-  color: #fff;
+/* Couleurs selon le poste */
+.player-card.atk {
+    background-color: rgba(255, 0, 0, 0.562);
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
 }
 
-
-.filter-options img{
-  width: 50px;
-  height: 50px;
-  background-color: #00000056;
-  border-radius: 40%;
+.player-card.def {
+    background-color: #3498db8e; /* bleu pour Défenseur */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 
-.filter-options input[type="checkbox"] {
-  display: none;
+.player-card.mil {
+    background-color: #f1c40fb5; /* jaune pour Milieu */
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
 }
 
-.filter-options label {
-  display: inline-block;
-  cursor: pointer;
-  margin-right: 10px; /* Espacement entre les options */
+.player-card.gar {
+    background-color: #ffffffae; /* vert pour Gardien */
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
 }
-
-.filter-options label:hover img {
-  transform: scale(1.1);
-  transition: transform .2s;
-}
-
-/* --------------------- État coché --------------------- */
-.filter-options input[type="checkbox"]:checked + img {
-  background-color: rgba(255, 255, 255, 0.671);
-}
-
-
-/*---------AFFICHAGE DES FILTRES || FIN------------*/
-
-
-/*---------AFFICHAGE DE LA GRILLE DES PERSOS || DEBUT------------*/
-
-
-.character-grid-container{
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  padding: 10px 30px;
-}
-
-
-
-.char-grid{
-  display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  list-style: none;
-  gap: var(--gap-y) var(--gap-x);
-}
-
-.char{
-  position: relative;
-}
-
-.char:hover{
-  transform: translateY(-4px);
-  transition: transform 0.2s;
-}
-
-/* Badge élément en haut à droite */
-.char .element-badge {
-  position: absolute;
-  top: 20px;
-  right: 28px;
-  width: 28px;
-  height: 28px;
-  border-radius: 25%;
-  background: rgb(43, 43, 43);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.char .element-badge img {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-.char-img{
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 5px solid rgb(29, 29, 29);   /* cadre rond blanc */
-  object-fit: cover;
-
-}
-
-.char a {
-  display: flex;
-  flex-direction: column; /* aligne image puis texte en dessous */
-  align-items: center;    /* centre horizontalement */
-  text-decoration: none;  /* retire le soulignement */
-}
-
-
-
-
-.char .name {
-  display: block;
-  padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 5%;
-  margin-top: 0px;        /* petit espace entre image et texte */
-  color: white;           /* ou une couleur adaptée */
-  font-size: 14px;
-  text-align: center;
-}
-
-.char[data-role="gar"] .char-img{ background-color: #ffffff; } /* jaune */
-.char[data-role="atk"] .char-img{ background-color: #9c2928; } /* rouge */
-.char[data-role="mil"] .char-img{ background-color: #da9800; } /* bleu */
-.char[data-role="def"] .char-img{ background-color: #0052af; } /* vert */
-.char[data-role="coach"] .char-img{ background-color: #3ba39b; } /* turquoise */
-.char[data-role="sup"] .char-img{ background-color: #a33c75; } /* rose */
 
 
 @media (max-width: 1280px){

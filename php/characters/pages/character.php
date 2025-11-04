@@ -1,97 +1,109 @@
+<?php 
+require_once(__DIR__ . '/../../../inclusions/config.php');
+
+// Vérifie si un joueur est passé dans l'URL (ex: ?id=1)
+$id = $_GET['id'] ?? null;
+
+if (!$id) {
+    die("❌ Aucun joueur sélectionné. Exemple : <a href='?id=1'>?id=1</a>");
+}
+
+try {
+    // Récupère les infos du joueur correspondant
+    $sql = "SELECT j.id_joueur, j.nom, j.prenom, j.poste, j.jeu, j.element, j.equipe, j.photo, j.description,
+               s.frappe, s.controle, s.pression, s.physique, s.agilite, s.intelligence, s.technique
+            FROM public.joueurs j
+            LEFT JOIN public.statistiques s ON j.id_joueur = s.id_joueur
+            WHERE j.id_joueur = :id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    $joueur = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$joueur) {
+        die("❌ Joueur introuvable.");
+    }
+} catch (PDOException $e) {
+    die("❌ Erreur de récupération du joueur : " . $e->getMessage());
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Victory Road Wiki</title>
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="character.css">
-        <link rel="icon" type="image/png" href="/Ressources/sidebar_logo.png">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-        <script src="charts.js" defer></script>
-    </head>
-    <body>
-        <div class="site">
-            <header class="header">
-                <div class="hamburger-menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="character.css">
+    <link rel="icon" type="image/png" href="/Ressources/sidebar_logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script>
+            const playerStats = <?= json_encode([
+            'attaque' => $joueur['attaque'] ?? 0,
+            'defense' => $joueur['defense'] ?? 0,
+            'technique' => $joueur['technique'] ?? 0,
+            'vitesse' => $joueur['vitesse'] ?? 0,
+            'endurance' => $joueur['endurance'] ?? 0
+            ]) ?>;
+    </script>
+    <script src="charts.js" defer></script>
+
+</head>
+<body>
+    <div class="site">
+
+        <?php require_once(__DIR__ . '/../../../inclusions/header.php'); ?>
+
+        <main class="main">
+
+            <div class="toptext-container">
+                <div class="navigation-path">
+                    <nav class="breadcrumb">
+                        <a href="/index.php">Home</a> 
+                        <span class="current">/</span>
+                        <a href="/php/characters/list.php">Characters</a>
+                        <span class="current">/</span>
+                        <span class="current"><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></span>
+                    </nav>
+                    <h1><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h1>
                 </div>
-                <div class="sidebar active">
-                    <div class="menu">
-                        <a class="sidebar-logo" href="/index.html"><img class="logo" src="/Ressources/sidebar_logo.png" oncontextmenu="return false;" alt="Victory Road Wiki Logo"></a>
-                        <br>
-                        <div class="item"><a href="/php/"><img class="redirect-image" src="/Ressources/charactericon.png">Characters</a></div>
-                        <div class="item"><a href="/php/guides/index.html"><img class="redirect-image" src="/Ressources/guide_icon.png">Guides</a></div>
-                        <div class="item"><a href="/php/techniques/index.html"><img class="redirect-image" src="/Ressources/ballfoot.png">Techniques</a></div>
-                        <div class="item"><a href="/php/items/index.html"><img class="redirect-image" src="/Ressources/ballfoot.png">Items</a></div>
-                        <div class="item"><a href="/php/calculator/index.html"><img class="redirect-image" src="/Ressources/calculator.png">Calculator</a></div>
-                        <div class="item"><a href="/php/tiers/index.html"><img class="redirect-image" src="/Ressources/trophy_icon.png">Tiers</a></div>
-                        <div class="item"><a href="/php/teams/index.html"><img class="redirect-image" src="/Ressources/teamicon.png">Teams</a></div>
-                    </div>
-                </div>
-            </header>
+            </div>
 
-            
+            <div class="character-container">
+                <img class="character-image" 
+                     src="<?= htmlspecialchars($joueur['photo']) ?>" 
+                     alt="<?= htmlspecialchars($joueur['prenom'] . ' ' . $joueur['nom']) ?>">
 
-            <main class="main">
+                <div class="bio-stat">
+                    <div class="bio">
+                        <h2>Description</h2>
 
-                <div class="toptext-container">
-                    <div class="navigation-path">
-                        <nav class="breadcrumb">
-                            <a href="/index.php">Home</a> 
-                            <span class="current">/</span>
-                            <a href="/php/characters/index.html">Characters</a>
-                            <span class="current">/</span>
-                            <span class="current">Mark Evans</span>
-                        </nav>
-                        <h1>Mark Evans</h1>
-                    </div>
-                </div>
-
-                <div class="character-container">
-                    <img class="character-image" src="../pages/Artwork/Artwork_Mark-Evans.png" alt="Mark Evans Image">
-
-                    <div class="bio-stat">
-                        <div class="bio">
-                            <h2>Description</h2>
-                            
-                            <div class="info-image">
-                          
-                                <img class="poste-image" src="../logo/Gar.png" alt="Goalkeeper Position">
-                                <img class="element-image" src="../logo/mountain.png" alt="Mountain Element">
-
-                            </div>
-                            <p>Capitaine légendaire de Raimon et gardien de but exceptionnel. Connu pour sa détermination inébranlable et sa capacité à inspirer ses coéquipiers. Son style de jeu unique combine technique et passion pure.</p>
+                        <div class="info-image">
+                            <img class="poste-image" src="/Ressources/logo/<?= htmlspecialchars($joueur['poste']) ?>.png" alt="Poste">
+                            <img class="element-image" src="/Ressources/logo/<?= htmlspecialchars($joueur['element']) ?>.png" alt="Élément">
                         </div>
 
-                        <div class="stat">
-                            <h2>Stats</h2>
-                            <canvas id="goodCanvas1" width="460" height="460" aria-label="Stats du joueur" role="img"></canvas>
-                        </div>
+                        <p><?= htmlspecialchars($joueur['description'] ?? "Aucune description disponible.") ?></p>
                     </div>
 
+                    <div class="stat">
+                        <h2>Stats</h2>
+                        <canvas id="goodCanvas1" width="460" height="460" aria-label="Stats du joueur" role="img"></canvas>
+                    </div>
                 </div>
+            </div>
 
-                <div class="passif">
-                    <h2>Passif de l'équipe</h2>
-                    <p>DÉF des Remparts <span>+3%</span> pour les joueurs proches.</p>
-                    <p>DÉF des Remparts <span>+3%</span> pour les joueurs proches.</p>
-                    <p>Valeurs de duel <span>+3%</span> pour les joueurs à des positions différentes.</p>
-                    <p>Quand l'adversaire commet une faute, Puissance de lien <span>+4%</span>.</p>
-                    <p>Jusqu'a que l'équipe reçoive une faute, DÉF des Remparts de l'équipe <span>+15%</span>.</p>
-                </div>
-                
+            <div class="passif">
+                <h2>Informations</h2>
+                <p><strong>Équipe :</strong> <?= htmlspecialchars($joueur['equipe'] ?? "Inconnue") ?></p>
+                <p><strong>Jeu :</strong> <?= htmlspecialchars($joueur['jeu'] ?? "Non précisé") ?></p>
+            </div>
 
-            </main>
+        </main>
 
+        <?php require_once(__DIR__ . '/../../../inclusions/footer.php'); ?>
 
-            <footer class="footer">
-                <p>Victory Road Wiki is an unofficial fan-created information site. All trademarks, copyrights, and related content belong to LEVEL5 Inc.<br> This site is not affiliated with or endorsed by LEVEL5 Inc.</p>
-                <p>contact : majindevworks@gmail.com</p>
-                <a href="https://discord.gg/xzhkSg64Nc"><img class="discord-image" src="/Ressources/discord_logo.png">Discord</a>
-            </footer>
-        </div>
-    </body>
+    </div>
+</body>
 </html>
