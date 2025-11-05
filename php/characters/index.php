@@ -1,24 +1,25 @@
-<?php 
+<?php
 require_once(__DIR__ . '/../../inclusions/config.php');
 
 try {
-    // Requête pour récupérer les joueurs
-    $sql = "SELECT j.id_joueur, j.nom, j.prenom, j.photo,
-                e.logo AS element_logo, e.nom AS element_nom,
-                p.logo AS poste_logo, p.nom AS poste_nom,
-                je.logo AS jeu_logo, je.nom AS jeu_nom,
-                eq.logo AS equipe_logo, eq.nom AS equipe_nom
-            FROM public.joueurs j
-            LEFT JOIN ressources e ON j.id_element = e.id_ressource AND e.type = 'element'
-            LEFT JOIN ressources p ON j.id_poste = p.id_ressource AND p.type = 'poste'
-            LEFT JOIN ressources je ON j.id_jeu = je.id_ressource AND je.type = 'jeu'
-            LEFT JOIN ressources eq ON j.id_equipe = eq.id_ressource AND eq.type = 'equipe'
-            ORDER BY j.id_joueur ASC";
+    // Récupérer les joueurs avec leur élément (image)
+    $sql = "
+        SELECT 
+            j.id_joueur,
+            j.nom,
+            j.prenom,
+            j.photo,
+            r.chemin AS element_logo
+        FROM public.joueurs j
+        LEFT JOIN public.ressources r ON j.id_element = r.id_ressource
+        ORDER BY j.id_joueur ASC
+    ";
 
     $stmt = $pdo->query($sql);
     $joueurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    die("❌ Erreur de récupération des joueurs : " . $e->getMessage());
+    die('Erreur : ' . $e->getMessage());
 }
 ?>
 
@@ -55,41 +56,72 @@ try {
 
                 <!-- LISTE DES JOUEURS !-->
                     
-                <?php foreach ($joueurs as $joueur): ?>
-                    <a href="/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
-                        <div class="player-card">
-                            <?php if (!empty($joueur['photo'])): ?>
-                                <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>">
-                            <?php else: ?>
-                                <img src="/images/joueurs/default.png" alt="Aucune photo">
-                            <?php endif; ?>
 
-                            <h2><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h2>
+                    <div class="players-grid">
+                        <?php foreach ($joueurs as $joueur): ?>
+                            <a href="/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
+                                <div class="player-card">
+                                    <?php if (!empty($joueur['photo'])): ?>
+                                        <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>" class="player-photo">
+                                    <?php else: ?>
+                                        <div class="player-placeholder">Aucune image</div>
+                                    <?php endif; ?>
 
-                            <!-- Logo de l'élément -->
-                            <?php if (!empty($joueur['element_logo'])): ?>
-                                <img class="element-logo" src="<?= htmlspecialchars($joueur['element_logo']) ?>" alt="<?= htmlspecialchars($joueur['element_nom']) ?>">
-                            <?php endif; ?>
+                                    <div class="player-info">
+                                        <h3><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h3>
 
-                            <!-- Logo du poste -->
-                            <?php if (!empty($joueur['poste_logo'])): ?>
-                                <img class="poste-logo" src="<?= htmlspecialchars($joueur['poste_logo']) ?>" alt="<?= htmlspecialchars($joueur['poste_nom']) ?>">
-                            <?php endif; ?>
+                                        <?php if (!empty($joueur['element_logo'])): ?>
+                                            <img src="<?= htmlspecialchars($joueur['element_logo']) ?>" alt="Élément" class="element-icon">
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
 
-                            <!-- Logo du jeu -->
-                            <?php if (!empty($joueur['jeu_logo'])): ?>
-                                <img class="jeu-logo" src="<?= htmlspecialchars($joueur['jeu_logo']) ?>" alt="<?= htmlspecialchars($joueur['jeu_nom']) ?>">
-                            <?php endif; ?>
+<style>
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
 
-                            <!-- Logo de l'équipe -->
-                            <?php if (!empty($joueur['equipe_logo'])): ?>
-                                <img class="equipe-logo" src="<?= htmlspecialchars($joueur['equipe_logo']) ?>" alt="<?= htmlspecialchars($joueur['equipe_nom']) ?>">
-                            <?php endif; ?>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
+.player-card-link {
+  text-decoration: none;
+  color: inherit;
+}
 
+.player-card {
+  background: #222;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.player-card:hover {
+  transform: scale(1.05);
+}
 
+.player-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.player-info {
+  padding: 10px;
+  color: #ffffffff;
+}
+
+.element-icon {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  border-radius: 50%;
+}
+</style>
 
             </main>
 

@@ -10,7 +10,7 @@ if (!$id) {
 
 try {
     // Récupère les infos du joueur correspondant
-    $sql = "SELECT j.id_joueur, j.nom, j.prenom, j.poste, j.jeu, j.element, j.equipe, j.photo, j.description,
+    $sql = "SELECT j.id_joueur, j.nom, j.prenom, j.id_poste, j.id_jeu, j.id_element, j.id_equipe, j.photo, j.description,
                s.frappe, s.controle, s.pression, s.physique, s.agilite, s.intelligence, s.technique
             FROM public.joueurs j
             LEFT JOIN public.statistiques s ON j.id_joueur = s.id_joueur

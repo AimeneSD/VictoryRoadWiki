@@ -39,11 +39,6 @@
 
 
 
-
-
-
-
-
 @media (max-width: 1280px){
   :root{ --cols: 6; --gap-x: 40px; --gap-y: 56px; }
 }
