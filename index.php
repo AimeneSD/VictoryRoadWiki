@@ -25,7 +25,7 @@
             <div class="cards-container">
                 <!-- Characters -->
                 <div class="card card--with-image">
-                    <a href="/php/characters/index.php" class="card-link">
+                    <a href="php/characters/index.php" class="card-link">
                         <div class="card__content">
                             <h2>Characters</h2>
                             <p>Meet all characters, their background and stats.</p>
