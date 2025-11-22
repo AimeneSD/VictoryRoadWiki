@@ -1,24 +1,21 @@
 * {
-   padding: 0px;
-   margin: 0px;
-   box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
-
 
 /* ===================== Variables (root) ===================== */
-:root{
-  --cols: 7;          /* colonnes par défaut (desktop) */
-  --gap-x: 50px;      /* écart horizontal entre cartes */
-  --gap-y: 30px;      /* écart vertical entre lignes (plus grand pour laisser passer les noms) */
-  --card: 140px;      /* diamètre des cartes */
+:root {
+  --cols: 7; /* colonnes par défaut (desktop) */
+  --gap-x: 50px; /* écart horizontal entre cartes */
+  --gap-y: 30px; /* écart vertical entre lignes (plus grand pour laisser passer les noms) */
+  --card: 140px; /* diamètre des cartes */
 }
-
-
 
 /*---------AFFICHAGE DU CONTENU PRINCIPAL DE LA PAGE || DEBUT ------------*/
 
-.main{
-  background: url('/Ressources/vr-bg2.jpg');
+.main {
+  background: url('../../../ressources/vr-bg2.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -35,74 +32,72 @@
   max-width: 1200px;
 }
 
-.character-image{
-    width: 600px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    background-color: rgba(0, 0, 0, 0.373);
+.character-image {
+  width: 600px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.373);
 }
-
 
 /*---------CADRE BIO || DEBUT ------------*/
 
 .bio {
-    background-color: rgba(0, 0, 0, 0.373); /* Fond semi-transparent */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.373); /* Fond semi-transparent */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 h2 {
-    margin-bottom: 10px;
-    color: #fff;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 p {
-    line-height: 1.6;
-    color: #fff;
+  line-height: 1.6;
+  color: #fff;
 }
 
-.poste-image, .element-image {
-    width: 50px; /* Ajustez la taille selon vos besoins */
-    height: auto;
-    margin-right: 10px; /* Espace entre les images et le texte */
-    vertical-align: middle; /* Aligne les images avec le texte */
-    margin-bottom: 10px;
+.poste-image,
+.element-image {
+  width: 50px; /* Ajustez la taille selon vos besoins */
+  height: auto;
+  margin-right: 10px; /* Espace entre les images et le texte */
+  vertical-align: middle; /* Aligne les images avec le texte */
+  margin-bottom: 10px;
 }
-
 
 /*---------CADRE STATS || DEBUT ------------*/
 .stat {
-    margin-top: 5%;
-    background-color: rgba(0, 0, 0, 0.373); /* Fond semi-transparent */
-    color: #fff; /* Couleur du texte */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    /* mettre à droite de l'image */
+  margin-top: 5%;
+  background-color: rgba(0, 0, 0, 0.373); /* Fond semi-transparent */
+  color: #fff; /* Couleur du texte */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  /* mettre à droite de l'image */
 }
 
-#goodCanvas1 { 
-  width: 100%; 
-  height: 100%; 
+#goodCanvas1 {
+  width: 100%;
+  height: 100%;
   display: block;
   margin: 0 auto;
 }
 
-
 /*---------CADRE PASSIF || DEBUT ------------*/
 
 .passif {
-    width: calc(100% - 40px);   /* pleine largeur moins marges gauche/droite */
-    margin: 20px auto;
-    border-radius: 15px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    background-color: rgba(0, 0, 0, 0.373);
-    padding: 20px;
-    max-width: 600px;          /* même largeur max que le container principal */
+  width: calc(100% - 40px); /* pleine largeur moins marges gauche/droite */
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.373);
+  padding: 20px;
+  max-width: 600px; /* même largeur max que le container principal */
 }
 
 .passif p {
@@ -115,19 +110,13 @@ p {
 }
 
 .passif span {
-  color: #FFD700; /* Couleur dorée pour les valeurs */
+  color: #ffd700; /* Couleur dorée pour les valeurs */
   font-weight: bold;
 }
 
-
 /*---------AFFICHAGE DU CONTENU PRINCIPAL DE LA PAGE || FIN ------------*/
 
-
-
-
-
-
-.toptext-container{
+.toptext-container {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
   padding-top: 3%; /*ESPACE TOUT LE TEXTE DU HAUT VERS LE BAS*/
   margin-left: 8vw; /* MET TOUT LE TEXTE DU HAUT (BREADCRUMB + FILTRES) ESPACÉ AVEC LA SIDEBAR */

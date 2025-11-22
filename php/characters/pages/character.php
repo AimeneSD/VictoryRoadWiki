@@ -34,7 +34,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/VictoryRoadWiki/css/styles.css">
     <link rel="stylesheet" href="character.css">
     <link rel="icon" type="image/png" href="/Ressources/sidebar_logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
@@ -72,16 +72,16 @@ try {
 
             <div class="character-container">
                 <img class="character-image" 
-                     src="<?= htmlspecialchars($joueur['photo']) ?>" 
-                     alt="<?= htmlspecialchars($joueur['prenom'] . ' ' . $joueur['nom']) ?>">
+                     src="<?= '/VictoryRoadWiki/'. htmlspecialchars($joueur['photo']); ?>" 
+                     alt="<?=  htmlspecialchars($joueur['prenom'] . ' ' . $joueur['nom']); ?>">
 
                 <div class="bio-stat">
                     <div class="bio">
                         <h2>Description</h2>
 
                         <div class="info-image">
-                            <img class="poste-image" src="/Ressources/logo/<?= htmlspecialchars($joueur['poste']) ?>.png" alt="Poste">
-                            <img class="element-image" src="/Ressources/logo/<?= htmlspecialchars($joueur['element']) ?>.png" alt="Élément">
+                            <img class="poste-image" src="<?= '/VictoryRoadWiki/ressources/' . htmlspecialchars($joueur['poste']); ?>" alt="Poste">
+                            <img class="element-image" src="<?= '/VictoryRoadWiki/ressources/' . htmlspecialchars($joueur['element']); ?>" alt="Élément">
                         </div>
 
                         <p><?= htmlspecialchars($joueur['description'] ?? "Aucune description disponible.") ?></p>

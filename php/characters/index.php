@@ -59,7 +59,7 @@ try {
 
                     <div class="players-grid">
                         <?php foreach ($joueurs as $joueur): ?>
-                            <a href="/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
+                            <a href="/VictoryRoadWiki/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
                                 <div class="player-card">
                                     <?php if (!empty($joueur['photo'])): ?>
                                         <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>" class="player-photo">
