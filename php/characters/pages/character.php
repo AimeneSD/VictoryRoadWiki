@@ -10,11 +10,9 @@ if (!$id) {
 
 try {
     // Récupère les infos du joueur correspondant
-    $sql = "SELECT j.id_joueur, j.nom, j.prenom, j.id_poste, j.id_jeu, j.id_element, j.id_equipe, j.photo, j.description,
-               s.frappe, s.controle, s.pression, s.physique, s.agilite, s.intelligence, s.technique
-            FROM public.joueurs j
-            LEFT JOIN public.statistiques s ON j.id_joueur = s.id_joueur
-            WHERE j.id_joueur = :id";
+    $sql = "SELECT p.id, p.name, p.position, p.element, p.kick, p.control, p.technique, p.pressure, p.physical, p.agility, p.intelligence, p.image_url, p.game, p.description
+            FROM public.players p
+            WHERE p.id = :id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
@@ -33,7 +31,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></title>
+    <title><?= htmlspecialchars($joueur['name']) ?></title>
     <link rel="stylesheet" href="/VictoryRoadWiki/css/styles.css">
     <link rel="stylesheet" href="character.css">
     <link rel="icon" type="image/png" href="/Ressources/sidebar_logo.png">
@@ -64,24 +62,24 @@ try {
                         <span class="current">/</span>
                         <a href="/php/characters/list.php">Characters</a>
                         <span class="current">/</span>
-                        <span class="current"><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></span>
+                        <span class="current"><?= htmlspecialchars($joueur['name']) ?></span>
                     </nav>
-                    <h1><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h1>
+                    <h1><?= htmlspecialchars($joueur['name']) ?></h1>
                 </div>
             </div>
 
             <div class="character-container">
                 <img class="character-image" 
-                     src="<?= '/VictoryRoadWiki/'. htmlspecialchars($joueur['photo']); ?>" 
-                     alt="<?=  htmlspecialchars($joueur['prenom'] . ' ' . $joueur['nom']); ?>">
+                     src="<?= htmlspecialchars($joueur['image_url']); ?>" 
+                     alt="<?=  htmlspecialchars($joueur['name']); ?>">
 
                 <div class="bio-stat">
                     <div class="bio">
                         <h2>Description</h2>
 
                         <div class="info-image">
-                            <img class="poste-image" src="<?= '/VictoryRoadWiki/ressources/' . htmlspecialchars($joueur['poste']); ?>" alt="Poste">
-                            <img class="element-image" src="<?= '/VictoryRoadWiki/ressources/' . htmlspecialchars($joueur['element']); ?>" alt="Élément">
+                            <img class="poste-image" src="<?=htmlspecialchars($joueur['position']); ?>" alt="Poste">
+                            <img class="element-image" src="<?=htmlspecialchars($joueur['element']); ?>" alt="Élément">
                         </div>
 
                         <p><?= htmlspecialchars($joueur['description'] ?? "Aucune description disponible.") ?></p>
@@ -96,8 +94,8 @@ try {
 
             <div class="passif">
                 <h2>Informations</h2>
-                <p><strong>Équipe :</strong> <?= htmlspecialchars($joueur['equipe'] ?? "Inconnue") ?></p>
-                <p><strong>Jeu :</strong> <?= htmlspecialchars($joueur['jeu'] ?? "Non précisé") ?></p>
+                <p><strong>Équipe :</strong> <?= htmlspecialchars($joueur['team'] ?? "Inconnue") ?></p>
+                <p><strong>Jeu :</strong> <?= htmlspecialchars($joueur['game'] ?? "Non précisé") ?></p>
             </div>
 
         </main>
