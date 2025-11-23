@@ -5,14 +5,15 @@ try {
     // Récupérer les joueurs avec leur élément (image)
     $sql = "
         SELECT 
-            j.id_joueur,
-            j.nom,
-            j.prenom,
-            j.photo,
-            r.chemin AS element_logo
-        FROM public.joueurs j
-        LEFT JOIN public.ressources r ON j.id_element = r.id_ressource
-        ORDER BY j.id_joueur ASC
+            p.id,
+            p.name,
+            p.position,
+            p.element,
+            p.image_url,
+            p.game
+        FROM public.players p
+
+        ORDER BY p.id ASC
     ";
 
     $stmt = $pdo->query($sql);
@@ -59,19 +60,19 @@ try {
 
                     <div class="players-grid">
                         <?php foreach ($joueurs as $joueur): ?>
-                            <a href="/VictoryRoadWiki/php/characters/pages/character.php?id=<?= urlencode($joueur['id_joueur']) ?>" class="player-card-link">
+                            <a href="/VictoryRoadWiki/php/characters/pages/character.php?id=<?= urlencode($joueur['id']) ?>" class="player-card-link">
                                 <div class="player-card">
-                                    <?php if (!empty($joueur['photo'])): ?>
-                                        <img src="<?= htmlspecialchars($joueur['photo']) ?>" alt="<?= htmlspecialchars($joueur['nom']) ?>" class="player-photo">
+                                    <?php if (!empty($joueur['image_url'])): ?>
+                                        <img src="<?= htmlspecialchars($joueur['image_url']) ?>" alt="<?= htmlspecialchars($joueur['name']) ?>" class="player-photo">
                                     <?php else: ?>
                                         <div class="player-placeholder">Aucune image</div>
                                     <?php endif; ?>
 
                                     <div class="player-info">
-                                        <h3><?= htmlspecialchars($joueur['nom'] . ' ' . $joueur['prenom']) ?></h3>
+                                        <h3><?= htmlspecialchars($joueur['name']) ?></h3>
 
-                                        <?php if (!empty($joueur['element_logo'])): ?>
-                                            <img src="<?= htmlspecialchars($joueur['element_logo']) ?>" alt="Élément" class="element-icon">
+                                        <?php if (!empty($joueur['element'])): ?>
+                                            <img src="<?= htmlspecialchars($joueur['element']) ?>" alt="Élément" class="element-icon">
                                         <?php endif; ?>
                                     </div>
                                 </div>
